@@ -1,0 +1,20 @@
+export const mainCarouselData=[{
+    image:"https://sttylme.com/cdn/shop/articles/for-app-swarovski-saree-landscape.jpg?v=1712298765",
+    path:"/women/clothing/lenga_choli"
+},{
+    image:"https://sttylme.com/cdn/shop/articles/for-app-black-saree-landscape.jpg?v=1712299510",
+    path:'/women/clothing/women_dress'
+},
+{
+    image:"https://sttylme.com/cdn/shop/articles/for-app-black-saree-landscape.jpg?v=1712299510",
+    path:'/women/clothing/women_dress'
+},
+{
+    image:"https://sttylme.com/cdn/shop/articles/for-app-black-saree-landscape.jpg?v=1712299510",
+    path:'/women/clothing/women_saree'
+},
+{
+    image:"https://sttylme.com/cdn/shop/articles/for-app-swarovski-saree-landscape.jpg?v=1712298765",
+    path:'/women/clothing/women_saree'
+}
+]
