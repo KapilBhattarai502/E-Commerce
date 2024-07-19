@@ -9,14 +9,18 @@ const items = mainCarouselData.map((item)=><img className='mx-auto cursor-pointe
    
 
 const MainCarousel = () => (
+    
     <AliceCarousel 
     items={items}
     disableButtonsControls
     autoPlay
     autoPlayInterval={1500}
     infinite
+    className='-z-50'
+    
         
     />
+
 );
 
 export default MainCarousel;
