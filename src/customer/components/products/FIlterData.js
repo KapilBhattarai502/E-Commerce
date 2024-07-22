@@ -53,7 +53,7 @@ export const singleFilter=[
     },
     {
         id:"discount",
-        name:"DISCOUNT RANGE",
+        name:"Discount Range",
         options:[
             {
             value:'10',
