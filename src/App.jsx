@@ -3,6 +3,7 @@ import Navigation from './customer/components/Navigation/Navigation'
 import Homepage from './customer/components/Navigation/HomeCarousel/Pages/Homepage/Homepage'
 import Footer from './customer/components/Footer/Footer'
 import Products from './customer/components/Products/Products'
+import ProductDetails from './customer/components/ProductDetails/ProductDetails'
 
 
 const App = () => {
@@ -12,7 +13,8 @@ const App = () => {
     <Navigation/>
     <div className=''>
     {/* <Homepage /> */}
-    <Products/>
+    {/* <Products/> */}
+    <ProductDetails/>
     
 
 
