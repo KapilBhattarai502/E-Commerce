@@ -4,6 +4,7 @@ import Homepage from './customer/components/Navigation/HomeCarousel/Pages/Homepa
 import Footer from './customer/components/Footer/Footer'
 import Products from './customer/components/Products/Products'
 import ProductDetails from './customer/components/ProductDetails/ProductDetails'
+import Cart from './customer/components/Cart/Cart'
 
 
 const App = () => {
@@ -14,7 +15,8 @@ const App = () => {
     <div className=''>
     {/* <Homepage /> */}
     {/* <Products/> */}
-    <ProductDetails/>
+    {/* <ProductDetails/> */}
+    <Cart/>
     
 
 
