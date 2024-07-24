@@ -32,6 +32,8 @@ import { styled } from "@mui/material/styles";
 import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress";
+import { mens_kurta } from "../../../Data/menskurta";
+import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -423,6 +425,18 @@ export default function ProductDetails() {
               </Grid>
             </Grid>
           </div>
+        </section>
+        {/* Similar Products */}
+        <section className="pt-10">
+        <h1 className="font-semibold mb-4 pl-4 text-lg">Similar Products</h1>
+        <div className="grid xl:grid-cols-6 gap-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-4">
+        {mens_kurta.map((item)=>{
+          return(
+          <HomeSectionCard {...item} />)
+        })}
+
+        </div>
+
         </section>
       </div>
     </div>
