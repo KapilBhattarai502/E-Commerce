@@ -26,7 +26,8 @@ import Tooltip from "@mui/material/Tooltip";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
-import { deepOrange } from '@mui/material/colors';
+import { deepOrange } from "@mui/material/colors";
+import {useNavigate} from 'react-router-dom';
 
 import {
   Dialog,
@@ -48,6 +49,8 @@ import {
   ShoppingBagIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
+
 
 const navigation = {
   categories: [
@@ -175,20 +178,28 @@ const navigation = {
   ],
   pages: [
     { name: "Company", href: "#" },
-    { name: "Stores", href: "#" },
+    { name: "Stores", href: "/products" },
   ],
 };
+
 
 export default function Navigation() {
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open1 = Boolean(anchorEl);
+  const navigate=useNavigate();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+   navigate(`/account/order`)
   };
+  const handleCategoryClick=(category,section,item,close)=>{
+    navigate(`/${category.id}/${section.id}/${item.name}`)
+    close();
+    
+  }
 
   return (
     <div className="bg-white z-50 relative">
@@ -347,10 +358,7 @@ export default function Navigation() {
           Get free delivery on orders over $100
         </p>
 
-        <nav
-          aria-label="Top"
-          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
-        >
+        <nav aria-label="Top" className="w-full  sm:px-6 ">
           <div className="border-b border-gray-200">
             <div className="flex h-16 items-center">
               <button
@@ -365,14 +373,14 @@ export default function Navigation() {
 
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
-                <a href="#">
+                <Link to={"/"}>
                   <span className="sr-only">Your Company</span>
                   <img
                     alt=""
                     src="https://img.icons8.com/?size=100&id=aUZxT3Erwill&format=png&color=000000"
                     className="h-8 w-auto"
                   />
-                </a>
+                </Link>
               </div>
 
               {/* Flyout menus */}
@@ -444,12 +452,24 @@ export default function Navigation() {
                                     >
                                       {section.items.map((item) => (
                                         <li key={item.name} className="flex">
-                                          <a
+                                          {/* <a
                                             href={item.href}
                                             className="hover:text-gray-800"
                                           >
                                             {item.name}
-                                          </a>
+                                          </a> */}
+                                          <p className="cursor-pointer"
+                                            onClick={() =>
+                                              handleCategoryClick(
+                                                category,
+                                                section,
+                                                item,
+                                                close
+                                              )
+                                            }
+                                          >
+                                            {item.name}
+                                          </p>
                                         </li>
                                       ))}
                                     </ul>
@@ -464,13 +484,13 @@ export default function Navigation() {
                   ))}
 
                   {navigation.pages.map((page) => (
-                    <a
+                    <Link
                       key={page.name}
-                      href={page.href}
+                      to={page.href}
                       className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
                     >
                       {page.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </PopoverGroup>
@@ -494,9 +514,15 @@ export default function Navigation() {
                         aria-haspopup="true"
                         aria-expanded={open1 ? "true" : undefined}
                       >
-                        <Avatar 
-                        
-                        sx={{ width: 32, height: 32 , bgcolor: deepOrange[500] }}>K</Avatar>
+                        <Avatar
+                          sx={{
+                            width: 32,
+                            height: 32,
+                            bgcolor: deepOrange[500],
+                          }}
+                        >
+                          K
+                        </Avatar>
                       </IconButton>
                     </Tooltip>
                   </Box>
@@ -539,7 +565,7 @@ export default function Navigation() {
                       <Avatar /> Profile
                     </MenuItem>
                     <MenuItem onClick={handleClose}>
-                      <Avatar /> My account
+                      <Avatar />My Orders
                     </MenuItem>
                     <Divider />
                     <MenuItem onClick={handleClose}>
@@ -577,7 +603,10 @@ export default function Navigation() {
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
-                  <a href="#" className="group -m-2 flex items-center p-2">
+                  <Link
+                    className="group -m-2 flex items-center p-2"
+                    to={"/cart"}
+                  >
                     <ShoppingBagIcon
                       aria-hidden="true"
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
@@ -586,7 +615,7 @@ export default function Navigation() {
                       0
                     </span>
                     <span className="sr-only">items in cart, view bag</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

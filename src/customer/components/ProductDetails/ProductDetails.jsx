@@ -34,6 +34,7 @@ import LinearProgress, {
 } from "@mui/material/LinearProgress";
 import { mens_kurta } from "../../../Data/menskurta";
 import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
+import { Link } from "react-router-dom";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -271,10 +272,11 @@ export default function ProductDetails() {
                     </RadioGroup>
                   </fieldset>
                 </div>
-
-                <Button className="mt-3 bg-indigo-500 px-7 py-4 rounded-lg text-white">
-                  Add To Cart
-                </Button>
+                <Link to={"/cart"}>
+                  <Button className="mt-3 bg-indigo-500 px-7 py-4 rounded-lg text-white">
+                    Add To Cart
+                  </Button>
+                </Link>
               </form>
             </div>
 
@@ -342,37 +344,43 @@ export default function ProductDetails() {
                   <p className="opacity-60">594890 Ratings</p>
                 </div>
                 <Box className="mt-5 py-2">
-                  <Grid container alignItems={"center"} gap={2} >
+                  <Grid container alignItems={"center"} gap={2}>
                     <Grid item xs={2}>
                       <p>Excellent</p>
                     </Grid>
                     <Grid item xs={7}>
                       <LinearProgress
-                        sx={{ bgcolor: "#d0d0d0",height:7, borderRadius: 4 }}
+                        sx={{ bgcolor: "#d0d0d0", height: 7, borderRadius: 4 }}
                         variant="determinate"
                         value={40}
                         color="success"
                       />
                     </Grid>
-                    
-
                   </Grid>
-                  <Grid container alignItems={"center"} gap={2} className="mt-3">
+                  <Grid
+                    container
+                    alignItems={"center"}
+                    gap={2}
+                    className="mt-3"
+                  >
                     <Grid item xs={2}>
                       <p>Very Good</p>
                     </Grid>
                     <Grid item xs={7}>
                       <LinearProgress
-                        sx={{ bgcolor: "#d0d0d0",height:7, borderRadius: 4 }}
+                        sx={{ bgcolor: "#d0d0d0", height: 7, borderRadius: 4 }}
                         variant="determinate"
                         value={40}
                         color="success"
                       />
                     </Grid>
-                    
-
                   </Grid>
-                  <Grid container alignItems={"center"} gap={2} className="mt-3">
+                  <Grid
+                    container
+                    alignItems={"center"}
+                    gap={2}
+                    className="mt-3"
+                  >
                     <Grid item xs={2}>
                       <p>Good</p>
                     </Grid>
@@ -384,10 +392,13 @@ export default function ProductDetails() {
                         color="primary"
                       />
                     </Grid>
-                    
-
                   </Grid>
-                  <Grid container alignItems={"center"} gap={2} className="mt-3">
+                  <Grid
+                    container
+                    alignItems={"center"}
+                    gap={2}
+                    className="mt-3"
+                  >
                     <Grid item xs={2}>
                       <p>Average</p>
                     </Grid>
@@ -399,10 +410,13 @@ export default function ProductDetails() {
                         color="warning"
                       />
                     </Grid>
-                    
-
                   </Grid>
-                  <Grid container alignItems={"center"} gap={2} className="mt-3">
+                  <Grid
+                    container
+                    alignItems={"center"}
+                    gap={2}
+                    className="mt-3"
+                  >
                     <Grid item xs={2}>
                       <p>Poor</p>
                     </Grid>
@@ -412,31 +426,22 @@ export default function ProductDetails() {
                         variant="determinate"
                         value={15}
                         color="error"
-                      
                       />
                     </Grid>
-                    
-
                   </Grid>
-                  
                 </Box>
-             
-                
               </Grid>
             </Grid>
           </div>
         </section>
         {/* Similar Products */}
         <section className="pt-10">
-        <h1 className="font-semibold mb-4 pl-4 text-lg">Similar Products</h1>
-        <div className="grid xl:grid-cols-6 gap-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-4">
-        {mens_kurta.map((item)=>{
-          return(
-          <HomeSectionCard {...item} />)
-        })}
-
-        </div>
-
+          <h1 className="font-semibold mb-4 pl-4 text-lg">Similar Products</h1>
+          <div className="grid xl:grid-cols-6 gap-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-4">
+            {mens_kurta.map((item) => {
+              return <HomeSectionCard {...item} />;
+            })}
+          </div>
         </section>
       </div>
     </div>

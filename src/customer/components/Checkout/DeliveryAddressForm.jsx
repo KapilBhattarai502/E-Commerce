@@ -6,6 +6,25 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 const DeliveryAddressForm = () => {
+    const handleSubmit=(event)=>{
+        event.preventDefault();
+    
+        const data=new FormData(event.currentTarget);
+        
+        const address={
+            firstName:data.get("firstName"),
+            lastName:data.get("lastName"),
+            Address:data.get("address"),
+            City:data.get("City"),
+            state:data.get("State"),
+            postalCode:data.get("Zippostal"),
+            phoneNumber:data.get("PhoneNumber")
+        }
+        console.log("address",address);
+     
+
+
+    }
   return (
     <div className="">
       <Grid container spacing={4}>
@@ -28,7 +47,7 @@ const DeliveryAddressForm = () => {
         </Grid>
         <Grid item xs={12} lg={7}>
           <Box className="border rounded-s-md shadow-md p-5">
-            <form>
+            <form onSubmit={handleSubmit}>
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                   <TextField
@@ -39,19 +58,17 @@ const DeliveryAddressForm = () => {
                     fullWidth
                     autoComplete="given-name"
                   />
-                  
                 </Grid>
-                
-                  <Grid item xs={12} sm={6}>
+
+                <Grid item xs={12} sm={6}>
                   <TextField
                     required
                     id="lastName"
-                    name="lasttName"
+                    name="lastName"
                     label="lastName"
                     fullWidth
                     autoComplete="given-name"
                   />
-                  
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
@@ -64,7 +81,6 @@ const DeliveryAddressForm = () => {
                     multiline
                     rows={5}
                   />
-                  
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
@@ -75,18 +91,16 @@ const DeliveryAddressForm = () => {
                     fullWidth
                     autoComplete="given-name"
                   />
-                  
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
                     required
                     id="State/Province/Region"
-                    name="State/Province/Region"
+                    name="State"
                     label="State/Province/Region"
                     fullWidth
                     autoComplete="given-name"
                   />
-                  
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
@@ -97,18 +111,28 @@ const DeliveryAddressForm = () => {
                     fullWidth
                     autoComplete="given-name"
                   />
-                  
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
                     required
-                    id="State/Province/Region"
-                    name="Phone Number"
+                    id="phonenumber"
+                    name="PhoneNumber"
                     label="Phone Number"
                     fullWidth
                     autoComplete="given-name"
                   />
-                  
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Button
+                  type="submit"
+            
+                    
+                    sx={{ mt: 2, bgcolor: "RGB(145 85 253)" }}
+                    size="large"
+                    variant="contained"
+                  >
+                    Deliver Here
+                  </Button>
                 </Grid>
               </Grid>
             </form>
