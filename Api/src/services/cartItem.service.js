@@ -2,9 +2,13 @@
 
 // creating a function for updating the cart item 
 
+import { CartItem } from "../models/cartitem.model";
 import { User } from "../models/user.model";
+import { findUserById } from "./user.service";
 
-async function updateCartItem(userId,cartItemId,cartItemData){
+
+
+export const updateCartItem=async(userId,cartItemId,cartItemData)=>{
 
     try {
         const item =await findCartItemById(cartItemId);
@@ -17,13 +21,57 @@ async function updateCartItem(userId,cartItemId,cartItemData){
             throw new Error("user not found : ",userId)
         }
         if(user._id.toString()===userId.toString()){
-            item.quantity=cartItemData.quantity;
-            item.price=item.quantity*item.product.price;
-            item.discountedPrice=item.quantity*item.product.disscountedPrice;
+        
+            
+            const updatedCartItem=await CartItem.updateOne(
+                {_id:cartItemId},
+                {
+                    quantity:cartItemData.quantity,
+                    price:item.quantity*item.product.price,
+                    discountedPrice:item.quantity*item.product.disscountedPrice,
+                }
+            )
+
+
+
+
+            return updatedCartItem;
+
+        
             
 
+        }
+        else{
+            throw new Error("you can't update this cart Item");
         }
     } catch (error) {
         
     }
+}
+
+export const removeCartItem=async(userId,cartItemId)=>{
+    const cartItem=await findCartItemById(cartItemId);
+    const user=await findUserById(userId);
+
+    if(cartItem.userId.toString()===user._id.toString()){
+        await CartItem.findByIdAndDelete(cartItemId);
+
+    }
+    else{
+        throw new Error("You cannot remove another user's item ")
+    }
+
+}
+
+export const findCartItemById=async(cartItemId)=>{
+
+    const cartItem=await findCartItemById(cartItemId);
+    if(cartItem){
+        return cartItem
+    }
+    else{
+        throw new Error("CardItem Not Found with Id",cartItemId)
+    }
+
+
 }
