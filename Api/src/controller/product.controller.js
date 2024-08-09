@@ -1,4 +1,4 @@
-import { productServiceCreateProduct,  productServiceFindProductById,  productServiceUpdateProduct, productServicecreateMultipleProduct, productServicegetAllProducts, } from "../services/product.service"
+import { productServiceCreateProduct,  productServiceFindProductById,  productServiceUpdateProduct, productServicecreateMultipleProduct, productServicedeleteProduct, productServicegetAllProducts, } from "../services/product.service"
 
 
 export const createProduct=async()=>{
@@ -62,6 +62,21 @@ export const createMultipleProduct=async(req,res)=>{
     try {
         const products=await productServicecreateMultipleProduct(req.body);
         return res.status(201).send({message:"Products Created Sucessfully"},success);
+        
+    } catch (error) {
+        return res.status(500).send({error:error.message});
+        
+    }
+
+    
+}
+
+export const deleteProduct=async(req,res)=>{
+
+    const productId=req.paramas.id;
+    try {
+        await productServicedeleteProduct(productId);
+        return res.status(201).send({message:"Product deleted Sucessfully"},success);
         
     } catch (error) {
         return res.status(500).send({error:error.message});
