@@ -1,7 +1,7 @@
 import { Category } from "../models/category.model";
 import { Product } from "../models/product.model";
 
-const createProduct = async (reqData) => {
+export const productServiceCreateProduct = async (reqData) => {
   let topLevel = await Category.findOne({ name: reqData.topLevelCategory });
 
   if (!topLevel) {
@@ -53,17 +53,17 @@ const createProduct = async (reqData) => {
   return await product.save();
 };
 
-export const deleteProduct = async (productId) => {
+export const productServicedeleteProduct = async (productId) => {
   const product = await findProductById(productId);
   await Product.findByIdAndDelete(productId);
   return "product Deleted Successfully";
 };
 
-export const updateProduct = async (productId, reqData) => {
+export const productServiceUpdateProduct = async (productId, reqData) => {
   return await Product.findByIdAndUpdate(productId, reqData);
 };
 
-export const findProductById = async (id) => {
+export const productServiceFindProductById = async (id) => {
   const product = await Product.findById(id).populate("category").exec();
 
   if (!product) {
@@ -73,7 +73,7 @@ export const findProductById = async (id) => {
   return product;
 };
 
-export const getAllProducts = async (reqQuery) => {
+export const productServicegetAllProducts = async (reqQuery) => {
   let {
     category,
     color,
@@ -148,7 +148,7 @@ export const getAllProducts = async (reqQuery) => {
 
 };
 
-export const createMultipleProduct=async(products)=>{
+export const productServicecreateMultipleProduct=async(products)=>{
 
     for(let product of products){
         await createProduct(product)

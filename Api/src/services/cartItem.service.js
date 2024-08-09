@@ -8,7 +8,7 @@ import { findUserById } from "./user.service";
 
 
 
-export const updateCartItem=async(userId,cartItemId,cartItemData)=>{
+export const cartItemServiceupdateCartItem=async(userId,cartItemId,cartItemData)=>{
 
     try {
         const item =await findCartItemById(cartItemId);
@@ -49,7 +49,7 @@ export const updateCartItem=async(userId,cartItemId,cartItemData)=>{
     }
 }
 
-export const removeCartItem=async(userId,cartItemId)=>{
+export const cartItemServiceremoveCartItem=async(userId,cartItemId)=>{
     const cartItem=await findCartItemById(cartItemId);
     const user=await findUserById(userId);
 
@@ -63,7 +63,7 @@ export const removeCartItem=async(userId,cartItemId)=>{
 
 }
 
-export const findCartItemById=async(cartItemId)=>{
+export const cartItemServicefindCartItemById=async(cartItemId)=>{
 
     const cartItem=await findCartItemById(cartItemId);
     if(cartItem){

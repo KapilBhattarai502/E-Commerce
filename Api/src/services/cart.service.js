@@ -2,7 +2,7 @@ import { Cart } from "../models/cart.model.js";
 import { CartItem } from "../models/cartitem.model.js";
 import { Product } from "../models/product.model.js";
 
-export async function createCart(user){
+export async function cartServicecreateCart(user){
     try {
         const cart = new Cart({user})
         const createdCart =await cart.save();
@@ -15,7 +15,7 @@ export async function createCart(user){
    
 }
 
-export async function findUserCart(userId){
+export async function cartServicefindUserCart(userId){
     try {
         let cart = await Cart.findOne({user:userId});
         let cartItems=await CartItem.find({cart:cart._id}).populate("products");
@@ -44,7 +44,7 @@ export async function findUserCart(userId){
 
 }
 
-export const addCartItem=async(userId,req)=>{
+export const cartServiceaddCartItem=async(userId,req)=>{
     try {
         const cart=await Cart.findOne({user:userId});
         const product=await Product.findById(req.productId);

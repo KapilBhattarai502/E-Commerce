@@ -2,7 +2,7 @@ import { Address } from "../models/address.model";
 import { Order } from "../models/order.model";
 import { findUserCart } from "./cart.service";
 
-const createOrder = async (user, shipAddress) => {
+export const orderServiceCreateOrder = async (user, shipAddress) => {
   let address;
 
   if (shipAddress._id) {
@@ -50,14 +50,14 @@ const createOrder = async (user, shipAddress) => {
 
   return savedOrder;
 };
-export const findOrderById = (orderId) => {
+export const orderServiceFindOrderById = (orderId) => {
   const order = Order.findById(orderId).populate("user").populate({path:"orderItems",populate:{path:"product"}}).populate("shippingAddress");
 
   return order;
 };
 
 
-export const placeOrder = async (orderId) => {
+export const orderServiceplaceOrder = async (orderId) => {
   const order = await findOrderById(orderId);
   order.orderStatus = "PLACED";
   order.payementDetails.status = "COMPLETED";
@@ -65,32 +65,32 @@ export const placeOrder = async (orderId) => {
   return await order.save();
 };
 
-export const confirmedOrder = async (orderId) => {
+export const orderServiceconfirmedOrder = async (orderId) => {
   const order = await findOrderById(orderId);
   order.orderStatus = "CONFIRMED";
   return await order.save();
 };
 
-export const shipOrder = async (orderId) => {
+export const orderServiceshipOrder = async (orderId) => {
     const order = await findOrderById(orderId);
     order.orderStatus = "Shipped";
     return await order.save();
   };
   
-  export const deliveredOrder = async (orderId) => {
+  export const orderServicedeliveredOrder = async (orderId) => {
     const order = await findOrderById(orderId);
     order.orderStatus = "DELIVERED";
     return await order.save();
   };
 
 
-export const cancelledOrder = async (orderId) => {
+export const orderServicecancelledOrder = async (orderId) => {
     const order = await findOrderById(orderId);
     order.orderStatus = "CANCELLED";
     return await order.save();
   };
 
-export const usersOrderHistory=async(userId)=>{
+export const orderServiceusersOrderHistory=async(userId)=>{
 
     try {
         const orders=await Order.find({user:userId,orderStatus:"PLACED"}).populate({path:"orderItems",populate:{path:"product"}}).lean()
@@ -102,7 +102,7 @@ export const usersOrderHistory=async(userId)=>{
     }
 }
 
-export const getAllOrders=async()=>{
+export const orderServicegetAllOrders=async()=>{
 
     return await Order.find().populate({path:"orderItems",populate:{path:"product"}}).lean()
 

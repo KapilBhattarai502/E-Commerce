@@ -1,7 +1,7 @@
 import { Review } from "../models/review.model";
 import { findProductById } from "./product.service"
 
-export const createReview=async(reqData,user)=>{
+export const reviewServiceCreateReview=async(reqData,user)=>{
 
     const product=await findProductById(reqData.productId);
 
@@ -19,7 +19,7 @@ export const createReview=async(reqData,user)=>{
 
 }
 
-export const getAllReview=async(productId)=>{
+export const reviewServicegetAllReview=async(productId)=>{
     const product=await findProductById(reqData.productId);
 
     return await Review.find({product:productId}).populate("user");

@@ -2,7 +2,7 @@ import { Rating } from "../models/rating.model";
 import { findProductById } from "./product.service"
 
 
-const createRating=async(reqData,user)=>{
+export const ratingServiceCreateRating=async(reqData,user)=>{
     const product=await findProductById(reqData.productId);
 
     const rating=new Rating({
@@ -17,7 +17,7 @@ const createRating=async(reqData,user)=>{
 
 }
 
-export const getProductRating=async(productId)=>{
+export const ratingServicegetAllProductRating=async(productId)=>{
 
 
     return await Rating.find({product:productId});
