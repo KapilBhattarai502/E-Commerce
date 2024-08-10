@@ -1,9 +1,9 @@
-import { Rating } from "../models/rating.model";
-import { findProductById } from "./product.service"
+import { Rating } from "../models/rating.model.js";
+import { productServiceFindProductById } from "./product.service.js"
 
 
 export const ratingServiceCreateRating=async(reqData,user)=>{
-    const product=await findProductById(reqData.productId);
+    const product=await productServiceFindProductById(reqData.productId);
 
     const rating=new Rating({
         product:product._id,

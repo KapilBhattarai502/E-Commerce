@@ -2,7 +2,7 @@ import {getUserByEmail,createUser} from "../services/user.service.js"
 import {generateToken} from "../Config/Jwtprovider.js"
 import bcrypt from "bcrypt"
 // import cartService from "../services/cart.service.js"
-import {createCart} from '../services/cart.service.js';
+import {cartServicecreateCart} from '../services/cart.service.js';
 
 export const register =async(req,res)=>{
     try {
@@ -12,7 +12,7 @@ export const register =async(req,res)=>{
 
         
 
-        await createCart(user);
+        await cartServicecreateCart(user);
 
         return res.status(200).send({jwt,message:'register Success'});
         

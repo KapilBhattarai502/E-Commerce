@@ -2,9 +2,9 @@
 
 // creating a function for updating the cart item 
 
-import { CartItem } from "../models/cartitem.model";
-import { User } from "../models/user.model";
-import { findUserById } from "./user.service";
+import { CartItem } from "../models/cartitem.model.js";
+import { User } from "../models/user.model.js";
+import { findUserById } from "./user.service.js";
 
 
 
@@ -50,7 +50,7 @@ export const cartItemServiceupdateCartItem=async(userId,cartItemId,cartItemData)
 }
 
 export const cartItemServiceremoveCartItem=async(userId,cartItemId)=>{
-    const cartItem=await findCartItemById(cartItemId);
+    const cartItem=await cartItemServicefindCartItemById(cartItemId);
     const user=await findUserById(userId);
 
     if(cartItem.userId.toString()===user._id.toString()){
@@ -65,7 +65,7 @@ export const cartItemServiceremoveCartItem=async(userId,cartItemId)=>{
 
 export const cartItemServicefindCartItemById=async(cartItemId)=>{
 
-    const cartItem=await findCartItemById(cartItemId);
+    const cartItem=await CartItem.findById(cartItemId);
     if(cartItem){
         return cartItem
     }

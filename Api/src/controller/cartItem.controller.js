@@ -1,4 +1,4 @@
-import { cartItemServiceremoveCartItem, cartItemServiceupdateCartItem } from "../services/cartItem.service";
+import { cartItemServiceremoveCartItem, cartItemServiceupdateCartItem } from "../services/cartItem.service.js";
 
 export const updateCartItem=async(req,res)=>{
 

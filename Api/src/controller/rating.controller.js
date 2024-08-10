@@ -1,4 +1,4 @@
-import { ratingServiceCreateRating, ratingServicegetAllProductRating } from "../services/rating.service";
+import { ratingServiceCreateRating, ratingServicegetAllProductRating } from "../services/rating.service.js";
 
 export const createRating =async(req,res)=>{
 

@@ -8,3 +8,5 @@ const router=express.Router();
 router.put("/:id",authenticate,updateCartItem);
 
 router.delete("/:id",authenticate,removeCartItem);
+
+export default router;

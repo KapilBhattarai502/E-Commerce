@@ -1,13 +1,13 @@
-import { productServiceCreateProduct,  productServiceFindProductById,  productServiceUpdateProduct, productServicecreateMultipleProduct, productServicedeleteProduct, productServicegetAllProducts, } from "../services/product.service"
+import { productServiceCreateProduct,  productServiceFindProductById,  productServiceUpdateProduct, productServicecreateMultipleProduct, productServicedeleteProduct, productServicegetAllProducts, } from "../services/product.service.js"
 
 
-export const createProduct=async()=>{
+export const createProduct=async(req,res)=>{
 
     try {
         const product=await productServiceCreateProduct(req.body);
-        return resizeBy.status(201).send(product)
+        return res.status(201).send(product)
     } catch (error) {
-        return resizeBy.status(500).send({error:error.message});
+        return res.status(500).send({error:error.message});
     }
 
 }

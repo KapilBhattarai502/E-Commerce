@@ -8,3 +8,5 @@ const router=express.Router();
 router.get("/",authenticate,findUserCart);
 
 router.put("/add",authenticate,addItemToCart);
+
+export default router;

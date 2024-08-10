@@ -1,5 +1,5 @@
-import { Category } from "../models/category.model";
-import { Product } from "../models/product.model";
+import { Category } from "../models/category.model.js";
+import { Product } from "../models/product.model.js";
 
 export const productServiceCreateProduct = async (reqData) => {
   let topLevel = await Category.findOne({ name: reqData.topLevelCategory });
@@ -9,9 +9,10 @@ export const productServiceCreateProduct = async (reqData) => {
       name: reqData.topLevelCategory,
       level: 1,
     });
+    await topLevel.save();
   }
 
-  let secondLevel = await Category.find({
+  let secondLevel = await Category.findOne({
     name: reqData.secondLevelCategory,
     parentCategory: topLevel._id,
   });
@@ -22,6 +23,7 @@ export const productServiceCreateProduct = async (reqData) => {
       parentCategory: topLevel._id,
       level: 2,
     });
+    await secondLevel.save();
   }
 
   let thirdLevel = await Category.findOne({
@@ -34,10 +36,11 @@ export const productServiceCreateProduct = async (reqData) => {
       parentCategory: secondLevel._id,
       level: 3,
     });
+    await thirdLevel.save();
   }
 
   const product = new Product({
-    title: reqData.title,
+    title: reqData.title, 
     color: reqData.color,
     description: reqData.description,
     discountedPrice: reqData.discountedPrice,
@@ -131,29 +134,23 @@ export const productServicegetAllProducts = async (reqQuery) => {
       }
     }
   }
-  if(sort){
-    const sortDirection=sort==="price_high"?-1:1;
-    query=query.sort({discountedPrice:sortDirection})
+  if (sort) {
+    const sortDirection = sort === "price_high" ? -1 : 1;
+    query = query.sort({ discountedPrice: sortDirection });
   }
 
-  const totalProducts=await Product.countDocuments(query);
-  const skip=(pageNumber-1)*pageSize;
-  query=query.skip(skip).limit(pageSize);
-  const products=await query.exec();
+  const totalProducts = await Product.countDocuments(query);
+  const skip = (pageNumber - 1) * pageSize;
+  query = query.skip(skip).limit(pageSize);
+  const products = await query.exec();
 
-  const totalPages=Math.ceil(totalProducts/pageSize);
+  const totalPages = Math.ceil(totalProducts / pageSize);
 
-  return {content:products,currentPage:pageNumber,totalPages}
-
-
+  return { content: products, currentPage: pageNumber, totalPages };
 };
 
-export const productServicecreateMultipleProduct=async(products)=>{
-
-    for(let product of products){
-        await createProduct(product)
-    }
-
-}
-
-
+export const productServicecreateMultipleProduct = async (products) => {
+  for (let product of products) {
+    await createProduct(product);
+  }
+};
