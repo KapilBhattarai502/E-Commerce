@@ -18,8 +18,10 @@ export async function cartServicecreateCart(user){
 export async function cartServicefindUserCart(userId){
     try {
         let cart = await Cart.findOne({user:userId});
-        let cartItems=await CartItem.find({cart:cart._id}).populate("products");
+       
+        let cartItems=await CartItem.find({cart:cart._id}).populate("product");
         cart.cartItems=cartItems;
+       
 
         let totalPrice=0;
         let totalDiscountedPrice=0;
@@ -47,7 +49,7 @@ export async function cartServicefindUserCart(userId){
 export const cartServiceaddCartItem=async(userId,req)=>{
     try {
         const cart=await Cart.findOne({user:userId});
-        const product=await Product.findById(req.productId);
+        const product=await Product.findById(req.body.productId);
 
         const isPresent =await CartItem.findOne({cart:cart._id,product:product._id,userId})
 
@@ -55,7 +57,7 @@ export const cartServiceaddCartItem=async(userId,req)=>{
             const cartItem=await CartItem.create({
                 cart:cart._id,
                 product:product._id,
-                size:req.size,
+                size:req.body.size,
                 quantity:1,
                 userId,
                 price:product.price,
@@ -63,6 +65,8 @@ export const cartServiceaddCartItem=async(userId,req)=>{
 
 
             })
+
+
 
             return "Item added Successfully"
 

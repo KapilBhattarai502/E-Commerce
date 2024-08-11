@@ -17,7 +17,8 @@ export const findUserCart =async(req,res)=>{
 }
 
 export const addItemToCart =async(req,res)=>{
-    const user=req.user;
+    const user=await req.user;
+    
 
     try {
         const cartItem=await cartServiceaddCartItem(user._id,req);

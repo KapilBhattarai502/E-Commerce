@@ -2,6 +2,7 @@
 
 // creating a function for updating the cart item 
 
+
 import { CartItem } from "../models/cartitem.model.js";
 import { User } from "../models/user.model.js";
 import { findUserById } from "./user.service.js";
@@ -9,9 +10,14 @@ import { findUserById } from "./user.service.js";
 
 
 export const cartItemServiceupdateCartItem=async(userId,cartItemId,cartItemData)=>{
+    
+ 
 
     try {
-        const item =await findCartItemById(cartItemId);
+        const item =await cartItemServicefindCartItemById(cartItemId);
+
+
+        
 
         if (!item){
             throw new Error("cart item not found:",cartItemId)
@@ -23,14 +29,23 @@ export const cartItemServiceupdateCartItem=async(userId,cartItemId,cartItemData)
         if(user._id.toString()===userId.toString()){
         
             
-            const updatedCartItem=await CartItem.updateOne(
-                {_id:cartItemId},
+            const updatedCartItem = await CartItem.findOneAndUpdate(
+                { _id: cartItemId },
                 {
-                    quantity:cartItemData.quantity,
-                    price:item.quantity*item.product.price,
-                    discountedPrice:item.quantity*item.product.disscountedPrice,
-                }
-            )
+                    $set:{
+                 
+                    quantity: cartItemData.quantity,
+                    price: cartItemData.quantity * item.price,
+                    discountedPrice: cartItemData.quantity * item.discountedPrice,
+                 
+                    }
+               
+                },
+                { new: true }  // This returns the updated document
+              );
+
+
+              
 
 
 
@@ -65,12 +80,12 @@ export const cartItemServiceremoveCartItem=async(userId,cartItemId)=>{
 
 export const cartItemServicefindCartItemById=async(cartItemId)=>{
 
-    const cartItem=await CartItem.findById(cartItemId);
+    const cartItem=await CartItem.findById(cartItemId).populate("product");
     if(cartItem){
         return cartItem
     }
     else{
-        throw new Error("CardItem Not Found with Id",cartItemId)
+        throw new Error("Cart Item Not Found with Id",cartItemId)
     }
 
 

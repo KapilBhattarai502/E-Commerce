@@ -15,8 +15,10 @@ export const orderServiceCreateOrder = async (user, shipAddress) => {
     address.user = user;
     await address.save();
 
-    // I got little confused here
-    user.addresses.push(address);
+    // I got little confused here  
+    console.log(user.address)
+    user.address.push(address);
+    console.log(user.address)
 
     await user.save();
   }

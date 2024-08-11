@@ -2,10 +2,10 @@ import { orderServiceCreateOrder, orderServiceFindOrderById, orderServiceusersOr
 
 
 export const createOrder=async(req,res)=>{
-    const user=req.user;
+    const user=await req.user;
     try {
         let createdOrder=await orderServiceCreateOrder(user,req.body);
-        res.status(201).send(createOrder);
+        res.status(201).send(createdOrder);
     } catch (error) {
 
         return res.status(500).send({error:error.message})

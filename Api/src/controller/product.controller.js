@@ -14,7 +14,7 @@ export const createProduct=async(req,res)=>{
 
 export const updateProduct=async(req,res)=>{
 
-    const productId=req.paramas.id;
+    const productId=req.params.id;
     try {
         const product=await productServiceUpdateProduct(productId,req.body);
         return res.status(201).send(product);
@@ -29,7 +29,7 @@ export const updateProduct=async(req,res)=>{
 
 export const findProductById=async(req,res)=>{
 
-    const productId=req.paramas.id;
+    const productId=req.params.id;
     try {
         const product=await productServiceFindProductById(productId);
         return res.status(201).send(product);
@@ -44,7 +44,7 @@ export const findProductById=async(req,res)=>{
 
 export const getAllProducts=async(req,res)=>{
 
-    const productId=req.paramas.id;
+    const productId=req.params.id;
     try {
         const products=await productServicegetAllProducts(req.query);
         return res.status(201).send(products);

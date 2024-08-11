@@ -2,10 +2,11 @@ import { cartItemServiceremoveCartItem, cartItemServiceupdateCartItem } from "..
 
 export const updateCartItem=async(req,res)=>{
 
-    const user=req.user;
+    const user=await req.user;
 
     try {
         const updatedCartItem=await cartItemServiceupdateCartItem(user._id,req.params.id,req.body);
+        console.log(updatedCartItem)
         return res.status(200).send(updatedCartItem);
     } catch (error) {
 
@@ -17,7 +18,7 @@ export const updateCartItem=async(req,res)=>{
 
 export const removeCartItem=async(req,res)=>{
 
-    const user=req.user;
+    const user=await req.user;
 
     try {
        await cartItemServiceremoveCartItem(user._id,req.params.id);
