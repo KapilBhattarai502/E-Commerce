@@ -27,9 +27,11 @@ import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import { deepOrange } from "@mui/material/colors";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import {useSelector} from 'react-redux';
 
 import {
+  Button,
   Dialog,
   DialogBackdrop,
   DialogPanel,
@@ -50,7 +52,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
-
+import AuthModal from "../Auth/AuthModal";
 
 const navigation = {
   categories: [
@@ -182,24 +184,34 @@ const navigation = {
   ],
 };
 
-
 export default function Navigation() {
+  const cartItemCount=useSelector((state)=>state)
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [openAuthModal, setOpenAuthModal] = useState(false);
   const open1 = Boolean(anchorEl);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
-   navigate(`/account/order`)
+
+  const handleOpen = () => {
+    setOpenAuthModal(true);
   };
-  const handleCategoryClick=(category,section,item,close)=>{
-    navigate(`/${category.id}/${section.id}/${item.name}`)
+  const handleClose = () => {
+    setOpenAuthModal(false);
+  };
+  const handleCategoryClick = (category, section, item, close) => {
+    navigate(`/${category.id}/${section.id}/${item.name}`);
     close();
-    
-  }
+  };
+  const handleCloseUserMenu = (event) => {
+    setAnchorEl(null);
+  };
+  const navigateToOrders = () => {
+    navigate("/account/order");
+  };
+  console.log(cartItemCount)
 
   return (
     <div className="bg-white z-50 relative">
@@ -458,7 +470,8 @@ export default function Navigation() {
                                           >
                                             {item.name}
                                           </a> */}
-                                          <p className="cursor-pointer"
+                                          <p
+                                            className="cursor-pointer"
                                             onClick={() =>
                                               handleCategoryClick(
                                                 category,
@@ -496,99 +509,116 @@ export default function Navigation() {
               </PopoverGroup>
 
               <div className="ml-auto flex items-center">
-                {/* <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6"> */}
-                <React.Fragment>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      textAlign: "center",
-                    }}
-                  >
-                    <Tooltip title="Account settings">
-                      <IconButton
-                        onClick={handleClick}
-                        size="small"
-                        sx={{ ml: 2 }}
-                        aria-controls={open1 ? "account-menu" : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open1 ? "true" : undefined}
+                <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+                  {false ? (
+                    <div>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                          textAlign: "center",
+                        }}
                       >
-                        <Avatar
-                          sx={{
-                            width: 32,
-                            height: 32,
-                            bgcolor: deepOrange[500],
-                          }}
-                        >
-                          K
-                        </Avatar>
-                      </IconButton>
-                    </Tooltip>
-                  </Box>
-                  <Menu
-                    anchorEl={anchorEl}
-                    id="account-menu"
-                    open={open1}
-                    onClose={handleClose}
-                    onClick={handleClose}
-                    PaperProps={{
-                      elevation: 0,
-                      sx: {
-                        overflow: "visible",
-                        filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                        mt: 1.5,
-                        "& .MuiAvatar-root": {
-                          width: 32,
-                          height: 32,
-                          ml: -0.5,
-                          mr: 1,
-                        },
-                        "&::before": {
-                          content: '""',
-                          display: "block",
-                          position: "absolute",
-                          top: 0,
-                          right: 14,
-                          width: 10,
-                          height: 10,
-                          bgcolor: "background.paper",
-                          transform: "translateY(-50%) rotate(45deg)",
-                          zIndex: 0,
-                        },
-                      },
-                    }}
-                    transformOrigin={{ horizontal: "right", vertical: "top" }}
-                    anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-                  >
-                    <MenuItem onClick={handleClose}>
-                      <Avatar /> Profile
-                    </MenuItem>
-                    <MenuItem onClick={handleClose}>
-                      <Avatar />My Orders
-                    </MenuItem>
-                    <Divider />
-                    <MenuItem onClick={handleClose}>
-                      <ListItemIcon>
-                        <PersonAdd fontSize="small" />
-                      </ListItemIcon>
-                      Add another account
-                    </MenuItem>
-                    <MenuItem onClick={handleClose}>
-                      <ListItemIcon>
-                        <Settings fontSize="small" />
-                      </ListItemIcon>
-                      Settings
-                    </MenuItem>
-                    <MenuItem onClick={handleClose}>
-                      <ListItemIcon>
-                        <Logout fontSize="small" />
-                      </ListItemIcon>
-                      Logout
-                    </MenuItem>
-                  </Menu>
-                </React.Fragment>
-                {/* </div> */}
+                        <Tooltip title="Account settings">
+                          <IconButton
+                            onClick={handleClick}
+                            size="small"
+                            sx={{ ml: 2 }}
+                            aria-controls={open1 ? "account-menu" : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={open1 ? "true" : undefined}
+                          >
+                            <Avatar
+                              sx={{
+                                width: 32,
+                                height: 32,
+                                bgcolor: deepOrange[500],
+                              }}
+                            >
+                              K
+                            </Avatar>
+                          </IconButton>
+                        </Tooltip>
+                      </Box>
+                      <Menu
+                        anchorEl={anchorEl}
+                        id="account-menu"
+                        open={open1}
+                        onClose={handleCloseUserMenu}
+                        onClick={handleCloseUserMenu}
+                        PaperProps={{
+                          elevation: 0,
+                          sx: {
+                            overflow: "visible",
+                            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                            mt: 1.5,
+                            "& .MuiAvatar-root": {
+                              width: 32,
+                              height: 32,
+                              ml: -0.5,
+                              mr: 1,
+                            },
+                            "&::before": {
+                              content: '""',
+                              display: "block",
+                              position: "absolute",
+                              top: 0,
+                              right: 14,
+                              width: 10,
+                              height: 10,
+                              bgcolor: "background.paper",
+                              transform: "translateY(-50%) rotate(45deg)",
+                              zIndex: 0,
+                            },
+                          },
+                        }}
+                        transformOrigin={{
+                          horizontal: "right",
+                          vertical: "top",
+                        }}
+                        anchorOrigin={{
+                          horizontal: "right",
+                          vertical: "bottom",
+                        }}
+                      >
+                        <MenuItem onClick={handleCloseUserMenu}>
+                          <Avatar /> Profile
+                        </MenuItem>
+                        <MenuItem onClick={handleCloseUserMenu}>
+                          <div onClick={navigateToOrders} className="flex  items-center">
+                            <Avatar /> My Orders
+                          </div>
+                        </MenuItem>
+                        <Divider />
+                        <MenuItem onClick={handleCloseUserMenu}>
+                          <ListItemIcon>
+                            <PersonAdd fontSize="small" />
+                          </ListItemIcon>
+                          Add another account
+                        </MenuItem>
+                        <MenuItem onClick={handleCloseUserMenu}>
+                          <ListItemIcon>
+                            <Settings fontSize="small" />
+                          </ListItemIcon>
+                          Settings
+                        </MenuItem>
+                        <MenuItem onClick={handleCloseUserMenu}>
+                          <ListItemIcon>
+                            <Logout fontSize="small" />
+                          </ListItemIcon>
+                          Logout
+                        </MenuItem>
+                      </Menu>
+                    </div>
+                  ) : (
+                    <Button
+                      onClick={handleOpen}
+                      className="text-sm font-medium "
+                    >
+                      SIGN IN
+                    </Button>
+                  )}
+                </div>
 
                 {/* Search */}
                 <div className="flex lg:ml-6">
@@ -605,14 +635,15 @@ export default function Navigation() {
                 <div className="ml-4 flow-root lg:ml-6">
                   <Link
                     className="group -m-2 flex items-center p-2"
-                    to={"/cart"}
+                    to={"cart"}
                   >
                     <ShoppingBagIcon
                       aria-hidden="true"
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                     />
                     <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                      0
+                    {cartItemCount.Cart}
+                
                     </span>
                     <span className="sr-only">items in cart, view bag</span>
                   </Link>
@@ -622,6 +653,7 @@ export default function Navigation() {
           </div>
         </nav>
       </header>
+      <AuthModal handleClose={handleClose} open={openAuthModal} />
     </div>
   );
 }

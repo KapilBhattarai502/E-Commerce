@@ -35,6 +35,8 @@ import LinearProgress, {
 import { mens_kurta } from "../../../Data/menskurta";
 import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
 import { Link } from "react-router-dom";
+import {useDispatch} from 'react-redux';
+import { cartCountIncrement } from "../../../redux/Slices/cartSlice.js";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -91,6 +93,7 @@ function classNames(...classes) {
 }
 
 export default function ProductDetails() {
+  const dispatch=useDispatch();
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
   const [ratingvalue, setratingValue] = useState(3);
@@ -273,7 +276,7 @@ export default function ProductDetails() {
                   </fieldset>
                 </div>
                 <Link to={"/cart"}>
-                  <Button className="mt-3 bg-indigo-500 px-7 py-4 rounded-lg text-white">
+                  <Button onClick={e=>dispatch(cartCountIncrement())} className="mt-3 bg-indigo-500 px-7 py-4 rounded-lg text-white">
                     Add To Cart
                   </Button>
                 </Link>
