@@ -185,7 +185,7 @@ const navigation = {
 };
 
 export default function Navigation() {
-  const cartItemCount=useSelector((state)=>state)
+  // const cartItemCount=useSelector((state)=>state)
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [openAuthModal, setOpenAuthModal] = useState(false);
@@ -211,7 +211,7 @@ export default function Navigation() {
   const navigateToOrders = () => {
     navigate("/account/order");
   };
-  console.log(cartItemCount)
+
 
   return (
     <div className="bg-white z-50 relative">
@@ -642,7 +642,8 @@ export default function Navigation() {
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                     />
                     <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                    {cartItemCount.Cart}
+                    0
+                    {/* {cartItemCount.Cart} */}
                 
                     </span>
                     <span className="sr-only">items in cart, view bag</span>

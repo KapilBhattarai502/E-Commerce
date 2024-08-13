@@ -36,7 +36,7 @@ import { mens_kurta } from "../../../Data/menskurta";
 import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
 import { Link } from "react-router-dom";
 import {useDispatch} from 'react-redux';
-import { cartCountIncrement } from "../../../redux/Slices/cartSlice.js";
+// import { cartCountIncrement } from "../../../redux/Slices/cartSlice.js";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -276,7 +276,7 @@ export default function ProductDetails() {
                   </fieldset>
                 </div>
                 <Link to={"/cart"}>
-                  <Button onClick={e=>dispatch(cartCountIncrement())} className="mt-3 bg-indigo-500 px-7 py-4 rounded-lg text-white">
+                  <Button className="mt-3 bg-indigo-500 px-7 py-4 rounded-lg text-white">
                     Add To Cart
                   </Button>
                 </Link>

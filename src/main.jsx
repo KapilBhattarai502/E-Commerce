@@ -12,7 +12,7 @@ import Products from "./customer/components/Products/Products.jsx";
 import ProductDetails from "./customer/components/ProductDetails/ProductDetails.jsx";
 import Order from "./customer/components/Order/Order.jsx";
 import OrderDetails from "./customer/components/Order/OrderDetails.jsx";
-import {store} from './redux/store.js'
+import {store} from './state/store.js'
 import { Provider } from "react-redux";
 
 const router = createBrowserRouter([
