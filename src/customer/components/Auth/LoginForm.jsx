@@ -3,8 +3,12 @@ import { Grid, TextField } from "@mui/material";
 import Button from '@mui/material/Button'
 
 import {useNavigate} from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import { loginUser } from "../../../state/Auth/slices/registerSlice";
+
 
 const LoginForm = () => {
+  const dispatch=useDispatch();
     const navigate=useNavigate();
 
   const handleSubmit = (event) => {
@@ -14,10 +18,12 @@ const LoginForm = () => {
 
     const userData={
         email:data.get("email"),
-        Password:data.get("password")
+        password:data.get("password")
 
     }
+    console.log(userData)
   
+    dispatch(loginUser(userData));
 
   
   };

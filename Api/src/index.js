@@ -1,5 +1,6 @@
 import express from "express";
 import connectDB from "./Config/connectDB.js";
+import cors from 'cors';
 
 import authRouter from "./routes/auth.routes.js";
 import userRouter from "./routes/user.routes.js";
@@ -14,6 +15,7 @@ import adminOrderRouter from "./routes/adminOrder.routes.js";
 
 export const app = express();
 app.use(express.json());
+app.use(cors())
 connectDB();
 
 app.use("/auth", authRouter);

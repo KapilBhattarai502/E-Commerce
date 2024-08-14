@@ -7,7 +7,7 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 
 
 const HomeSectionCarousel = ({data,sectionName}) => {
-  console.log(data)
+
   
 
 

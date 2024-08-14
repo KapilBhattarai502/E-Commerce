@@ -1,11 +1,17 @@
-import { legacy_createStore,applyMiddleware,combineReducers } from "redux";
+// import { legacy_createStore, applyMiddleware, combineReducers } from "redux";
+// import { thunk } from "redux-thunk";
+// import { authReducer } from "./Auth/Reducer";
+import {configureStore} from '@reduxjs/toolkit'
+import authReducer from "./Auth/slices/registerSlice.js"
 
-import {thunk} from 'redux-thunk'
-import { authReducer } from "./Auth/Reducer";
+// const rootReducers = combineReducers({
+  // auth: authReducer,
+// });
 
-const rootReducers=combineReducers({
+// export const store = legacy_createStore(rootReducers, applyMiddleware(thunk));
+
+export default configureStore({
+  reducer:{
     auth:authReducer
-
+  }
 })
-
-export const store = legacy_createStore(rootReducers,applyMiddleware(thunk))

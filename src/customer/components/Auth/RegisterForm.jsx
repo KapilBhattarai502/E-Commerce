@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid, TextField } from "@mui/material";
 import Button from '@mui/material/Button'
 import { Link,useNavigate } from "react-router-dom"
-
+import {useDispatch,useSelector} from 'react-redux'
+// import { register,getUser } from "../../../state/Auth/Action";
+import { registerUser } from "../../../state/Auth/slices/registerSlice";
 
 const RegisterForm = () => {
-
+  const dispatch=useDispatch()
   const navigate=useNavigate();
+  const jwt=localStorage.getItem("jwt")
+ 
+   
+  // useEffect(()=>{
+  //   if(jwt){
+  //   dispatch(getUser())
+  //   }
+  // },[jwt,auth.jwt])
+
+
   const handleSubmit = (event) => {
 
     event.preventDefault();
@@ -19,7 +31,9 @@ const RegisterForm = () => {
         password:data.get("password")
 
     }
-    console.log("userData",userData)
+  // dispatch(register(userData))
+  dispatch(registerUser(userData));
+
   };
   return (
     <div>
@@ -68,7 +82,7 @@ const RegisterForm = () => {
       <div className="flex justify-center items-center">
         <div className="py-3 flex items-center">
             <p>Do you already have an account?</p>
-            <Button onClick={()=>navigate("/login")} className="ml-5" size="small">Login</Button>
+            <Button  onClick={()=>navigate("/login")} className="ml-5" size="small">Login</Button>
           
         </div>
       </div>

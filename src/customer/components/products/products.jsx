@@ -69,7 +69,7 @@ export default function Products() {
     const searchParams = new URLSearchParams(location.search);
 
     let filterValue = searchParams.getAll(sectionId);
-    console.log(filterValue, filterValue[0]);
+
     if (filterValue.length > 0 && filterValue[0].split(",").includes(value)) {
       filterValue = filterValue[0].split(",").filter((item) => item !== value);
 
@@ -78,7 +78,7 @@ export default function Products() {
       }
     } else {
       filterValue.push(value);
-      console.log(filterValue);
+      c
     }
     if (filterValue.length > 0) {
       searchParams.set(sectionId, filterValue.join(","));

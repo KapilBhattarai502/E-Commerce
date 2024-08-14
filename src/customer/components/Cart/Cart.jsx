@@ -1,10 +1,13 @@
 import React from "react";
 import CartItem from "./CartItem";
 import {useNavigate} from "react-router-dom"
+import {useSelector} from "react-redux"
 
 
 
 const Cart = () => {
+  const authData=useSelector((state)=>state);
+  console.log("authData",authData);
   const navigate=useNavigate();
   const handleCheckOut=()=>{
    
