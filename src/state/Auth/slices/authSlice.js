@@ -1,9 +1,10 @@
 import axios from 'axios'
 import {createAsyncThunk,createSlice} from '@reduxjs/toolkit';
 export const registerUser=createAsyncThunk('register/users',async(userData)=>{
-    console.log(userData)
+    
     const response=await axios.post('http://localhost:6464/auth/signup',userData);
     const user=response.data;
+    console.log(user)
     if(user.jwt){
         localStorage.setItem("jwt",user.jwt);
     }
@@ -39,14 +40,19 @@ export const loginUser=createAsyncThunk('login/users',async(userData)=>{
 })
 
 export const getUser=createAsyncThunk('get/Users',async(jwt)=>{
-    console.log("Hello buddy")
-    const response=await axios.get(`http://localhost:6464/api/users`,{
+
+    const response=await axios.get(`http://localhost:6464/api/users/profile`,{
                     headers:{
                         "Authorization":`Bearer ${jwt}`
                     }
         
                 })
+                
                 return response.data;
+})
+export const logout=createAsyncThunk('logout',()=>{
+    localStorage.removeItem('jwt');
+
 })
    
   
@@ -62,19 +68,14 @@ const authSlice =createSlice({
           jwt: null,
     },
     reducers:{
-        logout:(state,action)=>{
-            state.jwt=null;
-            localStorage.removeItem("jwt");
-
-
-            
-        }
+       
     },
 
     extraReducers:builder=>{
         builder
         .addCase(registerUser.pending,(state)=>{
-            state.status='pending'
+          state.status="pending"
+
         })
         .addCase(registerUser.fulfilled,(state,action)=>{
             state.status="succeeded"
@@ -106,6 +107,13 @@ const authSlice =createSlice({
             state.status='failed',
             state.error=action.error.message 
         })
+        .addCase(logout.fulfilled,(state)=>{
+            state.status="succeeded"
+            state.jwt=null
+            state.user=null
+            state.error=null
+        })
+       
 
         
     }

@@ -4,7 +4,7 @@ import Button from '@mui/material/Button'
 
 import {useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
-import { loginUser } from "../../../state/Auth/slices/registerSlice";
+import { loginUser } from "../../../state/Auth/slices/authSlice";
 
 
 const LoginForm = () => {
@@ -21,7 +21,7 @@ const LoginForm = () => {
         password:data.get("password")
 
     }
-    console.log(userData)
+ 
   
     dispatch(loginUser(userData));
 

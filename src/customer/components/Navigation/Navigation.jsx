@@ -13,7 +13,7 @@
   ```
 */
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Fragment, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
@@ -28,7 +28,7 @@ import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import { deepOrange } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
-import {useSelector} from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 
 import {
   Button,
@@ -53,6 +53,8 @@ import {
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import AuthModal from "../Auth/AuthModal";
+import { getUser, logout } from "../../../state/Auth/slices/authSlice";
+import { CatchingPokemon } from "@mui/icons-material";
 
 const navigation = {
   categories: [
@@ -144,9 +146,9 @@ const navigation = {
           id: "clothing",
           name: "Clothing",
           items: [
+            { name: "mens_kurta", href: "#" },
             { name: "Tops", href: "#" },
-            { name: "Pants", href: "#" },
-            { name: "Sweaters", href: "#" },
+            { name: "shirt", href: "#" },
             { name: "T-Shirts", href: "#" },
             { name: "Jackets", href: "#" },
             { name: "Activewear", href: "#" },
@@ -186,20 +188,28 @@ const navigation = {
 
 export default function Navigation() {
   // const cartItemCount=useSelector((state)=>state)
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [openAuthModal, setOpenAuthModal] = useState(false);
   const open1 = Boolean(anchorEl);
   const navigate = useNavigate();
+  const jwt = localStorage.getItem("jwt");
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+  const handleLogout = () => {
+    dispatch(logout());
+    handleCloseUserMenu();
+  };
+  const { auth } = useSelector((state) => state);
 
   const handleOpen = () => {
     setOpenAuthModal(true);
   };
   const handleClose = () => {
     setOpenAuthModal(false);
+    navigate("/");
   };
   const handleCategoryClick = (category, section, item, close) => {
     navigate(`/${category.id}/${section.id}/${item.name}`);
@@ -211,7 +221,18 @@ export default function Navigation() {
   const navigateToOrders = () => {
     navigate("/account/order");
   };
+  useEffect(() => {
+    if (jwt) {
+      dispatch(getUser(jwt));
+    }
+  }, [jwt, auth.jwt]);
 
+  useEffect(() => {
+    if (auth.user) {
+      handleClose();
+    }
+  }, [auth.user]);
+ 
 
   return (
     <div className="bg-white z-50 relative">
@@ -510,7 +531,7 @@ export default function Navigation() {
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  {false ? (
+                  {auth && auth.user ? (
                     <div>
                       <Box
                         sx={{
@@ -535,7 +556,7 @@ export default function Navigation() {
                                 bgcolor: deepOrange[500],
                               }}
                             >
-                              K
+                              {auth.user.firstName.split("")[0]}
                             </Avatar>
                           </IconButton>
                         </Tooltip>
@@ -585,7 +606,10 @@ export default function Navigation() {
                           <Avatar /> Profile
                         </MenuItem>
                         <MenuItem onClick={handleCloseUserMenu}>
-                          <div onClick={navigateToOrders} className="flex  items-center">
+                          <div
+                            onClick={navigateToOrders}
+                            className="flex  items-center"
+                          >
                             <Avatar /> My Orders
                           </div>
                         </MenuItem>
@@ -606,7 +630,7 @@ export default function Navigation() {
                           <ListItemIcon>
                             <Logout fontSize="small" />
                           </ListItemIcon>
-                          Logout
+                          <div onClick={handleLogout}>Logout</div>
                         </MenuItem>
                       </Menu>
                     </div>
@@ -642,9 +666,7 @@ export default function Navigation() {
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                     />
                     <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                    0
-                    {/* {cartItemCount.Cart} */}
-                
+                      0{/* {cartItemCount.Cart} */}
                     </span>
                     <span className="sr-only">items in cart, view bag</span>
                   </Link>

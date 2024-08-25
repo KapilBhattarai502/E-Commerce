@@ -13,6 +13,7 @@ export const generateToken=async(userId)=>{
 export const getUserIdFromToken =async(token)=>{
 
     const decodedToken= jwt.verify(token,SECRET_KEY);
+    
 
     return decodedToken.userId;
 

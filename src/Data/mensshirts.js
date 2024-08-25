@@ -6,8 +6,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 299,
         "price": 1299,
-        "discountPersent": 76,
-        "size": [
+        "discounredPercent": 76,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -22,9 +22,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -34,8 +34,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 299,
         "price": 899,
-        "discountPersent": 66,
-        "size": [
+        "discountedPercent": 66,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -50,9 +50,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -62,8 +62,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 299,
         "price": 1299,
-        "discountPersent": 76,
-        "size": [
+        "discountedPercent": 76,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -78,9 +78,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -90,8 +90,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 879,
         "price": 1599,
-        "discountPersent": 45,
-        "size": [
+        "discountedPercent": 45,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -106,9 +106,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -118,8 +118,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 419,
         "price": 1648,
-        "discountPersent": 74,
-        "size": [
+        "discountedPercent": 74,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -134,9 +134,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -146,8 +146,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 399,
         "price": 1299,
-        "discountPersent": 69,
-        "size": [
+        "discountedPercent": 69,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -162,9 +162,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -174,8 +174,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 379,
         "price": 1849,
-        "discountPersent": 79,
-        "size": [
+        "discountedPercent": 79,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -190,9 +190,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -202,8 +202,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 498,
         "price": 999,
-        "discountPersent": 50,
-        "size": [
+        "discountedPercent": 50,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -218,9 +218,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -230,8 +230,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 499,
         "price": 799,
-        "discountPersent": 50,
-        "size": [
+        "discountedPercent": 50,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -246,9 +246,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -258,8 +258,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 499,
         "price": 1799,
-        "discountPersent": 72,
-        "size": [
+        "discountedPercent": 72,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -274,9 +274,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -286,8 +286,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 409,
         "price": 1599,
-        "discountPersent": 74,
-        "size": [
+        "discountedPercent": 74,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -302,9 +302,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -314,8 +314,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 449,
         "price": 999,
-        "discountPersent": 55,
-        "size": [
+        "discountedPercent": 55,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -330,9 +330,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -342,8 +342,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 949,
         "price": 2499,
-        "discountPersent": 62,
-        "size": [
+        "discountedPercent": 62,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -358,9 +358,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -370,8 +370,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 899,
         "price": 1799,
-        "discountPersent": 50,
-        "size": [
+        "discountedPercent": 50,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -386,9 +386,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -398,8 +398,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 1099,
         "price": 2799,
-        "discountPersent": 62,
-        "size": [
+        "discountedPercent": 62,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -414,9 +414,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -426,8 +426,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 911,
         "price": 2399,
-        "discountPersent": 62,
-        "size": [
+        "discountedPercent": 62,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -442,9 +442,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -454,8 +454,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 499,
         "price": 1799,
-        "discountPersent": 72,
-        "size": [
+        "discountedPercent": 72,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -470,9 +470,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -482,8 +482,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 499,
         "price": 960,
-        "discountPersent": 16,
-        "size": [
+        "discountedPercent": 16,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -498,9 +498,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -510,8 +510,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 719,
         "price": 1199,
-        "discountPersent": 40,
-        "size": [
+        "discountedPercent": 40,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -526,9 +526,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -538,8 +538,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 899,
         "price": 1799,
-        "discountPersent": 50,
-        "size": [
+        "discountedPercent": 50,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -554,9 +554,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -566,8 +566,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 499,
         "price": 1499,
-        "discountPersent": 66,
-        "size": [
+        "discountedPercent": 66,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -582,9 +582,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -594,8 +594,8 @@ export const mens_shirt=[
         "color": "whitePack of 2",
         "discountedPrice": 799,
         "price": 1499,
-        "discountPersent": 46,
-        "size": [
+        "discountedPercent": 46,
+        "sizess": [
             {
               "name": "S",
               "quantity": 20
@@ -610,9 +610,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -622,8 +622,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 419,
         "price": 1648,
-        "discountPersent": 74,
-        "size": [
+        "discountedPercent": 74,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -638,9 +638,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -650,8 +650,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 949,
         "price": 2499,
-        "discountPersent": 62,
-        "size": [
+        "discountedPercent": 62,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -666,9 +666,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -678,8 +678,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 799,
         "price": 1599,
-        "discountPersent": 50,
-        "size": [
+        "discountedPercent": 50,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -694,9 +694,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -706,8 +706,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 149,
         "price": 2599,
-        "discountPersent": 45,
-        "size": [
+        "discountedPercent": 45,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -722,9 +722,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -734,8 +734,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 649,
         "price": 1499,
-        "discountPersent": 56,
-        "size": [
+        "discountedPercent": 56,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -750,9 +750,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -762,8 +762,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 499,
         "price": 990,
-        "discountPersent": 50,
-        "size": [
+        "discountedPercent": 50,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -778,9 +778,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -790,8 +790,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 959,
         "price": 1599,
-        "discountPersent": 40,
-        "size": [
+        "discountedPercent": 40,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -806,9 +806,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -818,8 +818,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 399,
         "price": 1599,
-        "discountPersent": 75,
-        "size": [
+        "discountedPercent": 75,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -834,9 +834,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -846,8 +846,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 599,
         "price": 899,
-        "discountPersent": 40,
-        "size": [
+        "discountedPercent": 40,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -862,9 +862,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -874,8 +874,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 620,
         "price": 699,
-        "discountPersent": 37,
-        "size": [
+        "discountedPercent": 37,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -890,9 +890,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -902,8 +902,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 751,
         "price": 1599,
-        "discountPersent": 53,
-        "size": [
+        "discountedPercent": 53,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -918,9 +918,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -930,8 +930,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 919,
         "price": 2299,
-        "discountPersent": 60,
-        "size": [
+        "discountedPercent": 60,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -946,9 +946,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -958,8 +958,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 719,
         "price": 1199,
-        "discountPersent": 40,
-        "size": [
+        "discountedPercent": 40,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -974,9 +974,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -986,8 +986,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 4499,
         "price": 5999,
-        "discountPersent": 25,
-        "size": [
+        "discountedPercent": 25,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -998,13 +998,13 @@ export const mens_shirt=[
             },
             {
               "name": "L",
-              "quantity": 50
+              "quantity":30
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -1014,8 +1014,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 499,
         "price": 1499,
-        "discountPersent": 66,
-        "size": [
+        "discountedPercent": 66,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -1030,9 +1030,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -1042,8 +1042,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 420,
         "price": 999,
-        "discountPersent": 57,
-        "size": [
+        "discountedPercent": 57,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -1058,9 +1058,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -1070,8 +1070,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 1099,
         "price": 1999,
-        "discountPersent": 47,
-        "size": [
+        "discountedPercent": 47,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -1086,9 +1086,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
@@ -1098,8 +1098,8 @@ export const mens_shirt=[
         "color": "white",
         "discountedPrice": 839,
         "price": 1399,
-        "discountPersent": 40,
-        "size": [
+        "discounredPercent": 40,
+        "sizes": [
             {
               "name": "S",
               "quantity": 20
@@ -1114,9 +1114,9 @@ export const mens_shirt=[
             }
           ],
           "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "shirt",
+          "topLevelCategory": "Men",
+          "secondLevelCategory": "Clothing",
+          "thirdLevelCategory": "shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     }
 ]

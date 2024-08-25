@@ -14,7 +14,7 @@
 */
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Dialog,
   DialogBackdrop,
@@ -39,11 +39,14 @@ import ProductCard from "./ProductCard";
 import { mens_kurta } from "../../../Data/menskurta";
 import { filters, singleFilter, sortOptions } from "./FIlterData";
 import FilterListIcon from "@mui/icons-material/FilterList";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate,useParams } from "react-router-dom";
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
+import { findProduct } from "../../../state/product/customerproductSlice";
+import {useDispatch,useSelector} from  'react-redux'
+
 
 
 const subCategories = [
@@ -64,6 +67,7 @@ export default function Products() {
   const [colorsizevalue, setcolorsizeValue] = useState('');
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch=useDispatch();
   const handleFilter = (value, sectionId) => {
     setcolorsizeValue(event.target.value);
     const searchParams = new URLSearchParams(location.search);
@@ -78,7 +82,7 @@ export default function Products() {
       }
     } else {
       filterValue.push(value);
-      c
+      
     }
     if (filterValue.length > 0) {
       searchParams.set(sectionId, filterValue.join(","));
@@ -95,6 +99,57 @@ export default function Products() {
 
     navigate({ search: `?${query}` });
   };
+
+  const decodedQueryString=decodeURIComponent(location.search);
+  const searchParams=new URLSearchParams(decodedQueryString);
+
+  const params=useParams()
+
+  
+  const colorValue=searchParams.get("color")
+  const sizeValue=searchParams.get("size")
+  const priceValue=searchParams.get("Price")
+  const discount=searchParams.get("discount")
+
+  const sortValue=searchParams.get("sort")
+  const pageNumber=searchParams.get("page") || 1;
+  const stock=searchParams.get("stock");
+
+  
+
+  useEffect(()=>{
+    const [minPrice,maxPrice]=priceValue===null?[0,10000]:priceValue.split('-').map(Number)
+
+    const data={
+      category:params.levelThree,
+      colors:colorValue || [],
+      sizes:sizeValue || [],
+      minPrice,
+      maxPrice,
+      minDiscount:discount || 0,
+      sort:sortValue || 'price_low',
+      pageNumber:pageNumber - 1,
+      pageSize:10,
+      stock:stock,
+
+    }
+    
+
+
+    dispatch(findProduct(data))
+
+
+  },[params.levelThree,colorValue,sizeValue,priceValue,discount,sortValue,stock,pageNumber])
+
+
+
+const filteredProducts=useSelector((state)=>state.product.products)
+
+
+
+
+
+
 
   return (
     <div className="bg-white">
@@ -429,9 +484,10 @@ export default function Products() {
               {/* Product grid */}
               <div className="lg:col-span-3 w-full ">
                 <div className="flex flex-wrap justify-center bg-white ">
-                  {mens_kurta.map((item, index) => {
-                    return <ProductCard {...item} />;
-                  })}
+                
+                  {filteredProducts ? filteredProducts.map((item, index) => {
+                    return <ProductCard {...item} key={index}/>;
+                  }):<><h1>Loading....</h1></>}
                 </div>
               </div>
             </div>

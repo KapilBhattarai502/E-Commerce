@@ -2,7 +2,10 @@
 // import { thunk } from "redux-thunk";
 // import { authReducer } from "./Auth/Reducer";
 import {configureStore} from '@reduxjs/toolkit'
-import authReducer from "./Auth/slices/registerSlice.js"
+import authReducer from "./Auth/slices/authSlice.js"
+import customerproductReducer from "./product/customerproductSlice.js"
+import cartReducer from './Cart/cartSlice.js'
+import orderReducer from './Order/orderSlice.js'
 
 // const rootReducers = combineReducers({
   // auth: authReducer,
@@ -12,6 +15,9 @@ import authReducer from "./Auth/slices/registerSlice.js"
 
 export default configureStore({
   reducer:{
-    auth:authReducer
+    auth:authReducer,
+    product:customerproductReducer,
+    cart:cartReducer,
+    order:orderReducer,
   }
 })

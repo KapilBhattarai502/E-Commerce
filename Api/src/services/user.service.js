@@ -24,6 +24,7 @@ export const findUserById = async (userId) => {
   try {
     const user = await User.findById(userId);
     // .populate("address");
+    
    
     if (!user) {
       throw new Error("No user with such Id :", userId);
@@ -49,10 +50,13 @@ export const getUserByEmail = async (email) => {
 
 
 export const getUserProfileByToken = async (token) => {
+  
   const userId =await getUserIdFromToken(token);
+  
  
   try {
     const user = await findUserById(userId);
+    
 
     if (!user) {
       throw new Error("No user with the given token :", token);

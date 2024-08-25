@@ -21,7 +21,7 @@
 */
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 import { Button, Radio, RadioGroup } from "@headlessui/react";
@@ -34,7 +34,10 @@ import LinearProgress, {
 } from "@mui/material/LinearProgress";
 import { mens_kurta } from "../../../Data/menskurta";
 import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
-import { Link } from "react-router-dom";
+import { Link,useParams} from "react-router-dom";
+import {useDispatch,useSelector} from 'react-redux';
+import { findOrderById } from "../../../../Api/src/controller/order.controller";
+import { findProductById } from "../../../state/product/customerproductSlice";
 
 
 const product = {
@@ -93,9 +96,18 @@ function classNames(...classes) {
 
 export default function ProductDetails() {
 
+
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
   const [ratingvalue, setratingValue] = useState(3);
+  const dispatch=useDispatch()
+  const params=useParams();
+  const productId=params.productid;
+  useEffect(()=>{
+
+    dispatch(findProductById({productId}))
+
+  },[])
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 10,
     borderRadius: 5,
@@ -108,6 +120,9 @@ export default function ProductDetails() {
       backgroundColor: theme.palette.mode === "light" ? "#1a90ff" : "#308fe8",
     },
   }));
+
+  const filteredDetails=useSelector((state)=>state.product.product.data)
+  console.log(filteredDetails)
 
   return (
     <div className="bg-white lg:px-20">
@@ -156,7 +171,7 @@ export default function ProductDetails() {
             <div className="overflow-hidden rounded-lg max-w-[30rem] max-h-[35rem]">
               <img
                 alt={product.images[0].alt}
-                src={product.images[0].src}
+                src={filteredDetails.imageUrl}
                 className="h-full w-full object-cover object-center"
               />
             </div>
@@ -178,10 +193,10 @@ export default function ProductDetails() {
           <div className="lg:col-span-1 max-auto max-w-2xl px-4 pb-16 sm:px-6 lg:max-w-7xl lg:px-8 lg:pb-24">
             <div className="lg:col-span-2">
               <h1 className="text-lg lg:text-xl font-semibold text-gray-900">
-                Brand Name
+                {filteredDetails.brand}
               </h1>
               <h1 className="text-lg lg:text-xl  text-gray-900 opacity-60 pt-1">
-                {product.name}
+                {filteredDetails.title}
               </h1>
             </div>
 
@@ -189,9 +204,9 @@ export default function ProductDetails() {
             <div className="mt-4 lg:row-span-3 lg:mt-0">
               <h2 className="sr-only">Product information</h2>
               <div className="flex space-x-5 items-center text-lg lg:text-xl text-gray-900 mt-6">
-                <p className="font-semibold">Rs 199</p>
-                <p className="oapcity-50 line-through">Rs 211</p>
-                <p className="text-green-500 font-semibold">5% off</p>
+                <p className="font-semibold">Rs {filteredDetails.price}</p>
+                <p className="oapcity-50 line-through">Rs {filteredDetails.discountedPrice}</p>
+                <p className="text-green-500 font-semibold">{filteredDetails.discountedPercent}% off</p>
               </div>
 
               {/* Reviews */}
@@ -289,7 +304,7 @@ export default function ProductDetails() {
 
                 <div className="space-y-6">
                   <p className="text-base text-gray-900">
-                    {product.description}
+                    {filteredDetails.description}
                   </p>
                 </div>
               </div>

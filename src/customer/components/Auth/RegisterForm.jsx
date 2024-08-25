@@ -3,20 +3,22 @@ import { Grid, TextField } from "@mui/material";
 import Button from '@mui/material/Button'
 import { Link,useNavigate } from "react-router-dom"
 import {useDispatch,useSelector} from 'react-redux'
-// import { register,getUser } from "../../../state/Auth/Action";
-import { registerUser } from "../../../state/Auth/slices/registerSlice";
+import { registerUser } from "../../../state/Auth/slices/authSlice";
+import { getUser } from "../../../state/Auth/slices/authSlice";
 
 const RegisterForm = () => {
   const dispatch=useDispatch()
   const navigate=useNavigate();
   const jwt=localStorage.getItem("jwt")
+  const {auth}=useSelector((state)=>state)
+  console.log("Auth is ",auth);
  
    
-  // useEffect(()=>{
-  //   if(jwt){
-  //   dispatch(getUser())
-  //   }
-  // },[jwt,auth.jwt])
+  useEffect(()=>{
+    if(jwt){
+    dispatch(getUser(jwt))
+    }
+  },[jwt,auth.jwt])
 
 
   const handleSubmit = (event) => {
@@ -31,7 +33,7 @@ const RegisterForm = () => {
         password:data.get("password")
 
     }
-  // dispatch(register(userData))
+ 
   dispatch(registerUser(userData));
 
   };
