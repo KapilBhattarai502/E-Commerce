@@ -7,8 +7,10 @@ export const getCart = createAsyncThunk("get/Cart", async () => {
 });
 
 export const addItemToCart = createAsyncThunk("add/ItemToCart", async (reqData) => {
-  const { data } = await api.put("/api/cart/add", reqData.data);
-  return data;
+  console.log('reqData is',reqData)
+  const { data } = await api.put("/api/cart/add", reqData);
+  console.log('data are',data);
+  // return data;
 });
 
 export const removeCartItem = createAsyncThunk("remove/Item", async (reqData) => {

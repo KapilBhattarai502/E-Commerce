@@ -46,6 +46,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import { findProduct } from "../../../state/product/customerproductSlice";
 import {useDispatch,useSelector} from  'react-redux'
+import Pagination from '@mui/material/Pagination';
 
 
 
@@ -144,6 +145,16 @@ export default function Products() {
 
 
 const filteredProducts=useSelector((state)=>state.product.products)
+
+
+const handlePaginationChange=(event,value)=>{
+  const searchParams=new URLSearchParams(location.search);
+  searchParams.set("page",value);
+  const query=searchParams.toString();
+  navigate({search:`?${query}`})
+
+}
+
 
 
 
@@ -485,12 +496,22 @@ const filteredProducts=useSelector((state)=>state.product.products)
               <div className="lg:col-span-3 w-full ">
                 <div className="flex flex-wrap justify-center bg-white ">
                 
-                  {filteredProducts ? filteredProducts.map((item, index) => {
+                  {filteredProducts && filteredProducts.content.length> 0 ? filteredProducts.content.map((item, index) => {
                     return <ProductCard {...item} key={index}/>;
                   }):<><h1>Loading....</h1></>}
                 </div>
               </div>
             </div>
+          </section>
+          <section className="w-full px=[3.6rem]">
+          <div className="px-4 py-5 flex justify-center">
+
+          <Pagination count={filteredProducts? filteredProducts.totalPages:0} color="secondary" onChange={handlePaginationChange}/>
+    
+
+
+          </div>
+
           </section>
         </main>
       </div>

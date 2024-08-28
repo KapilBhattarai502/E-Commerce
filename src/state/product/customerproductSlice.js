@@ -18,21 +18,25 @@ export const findProduct = createAsyncThunk("find/product", async (reqData) => {
     const { data } =await api.get(
       `/api/products?colors=${colors}&sizes=${sizes}&minPrice=${minPrice}&maxPrice=${maxPrice}&minDiscount=${minDiscount}&category=${category}&stock=${stock}&sort=${sort}&pageNumber=${pageNumber}&pageSize=${pageSize}`
     );
+    console.log('data is',data)
 
-    return data.content;
+    return data;
   
 });
 
 export const findProductById = createAsyncThunk(
   "find/productById",
   async (reqData) => {
+
+
     
     const { productId } = reqData;
+   
 
    
-      const  data  =await api.get(`/api/products/id/${productId}`);
-      console.log('data is',data)
-      return data;
+      const  response  =await api.get(`/api/products/id/${productId}`);
+   
+      return response.data;
       
     
   }

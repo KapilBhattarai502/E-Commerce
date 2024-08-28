@@ -3,11 +3,11 @@ import { findUserById } from "../services/user.service.js";
 
 
 export const authenticate=async(req,res,next)=>{
-    console.log('Headers :',req.headers);
+   
 
     try {
         const token=await req.headers.authoriztion?.split(" ")[1];
-        console.log('token is',token);
+   
         
         if(!token){
             return res.status(404).send({error:"Token Not Found"});

@@ -34,10 +34,11 @@ import LinearProgress, {
 } from "@mui/material/LinearProgress";
 import { mens_kurta } from "../../../Data/menskurta";
 import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
-import { Link,useParams} from "react-router-dom";
+import {useParams,useNavigate} from "react-router-dom";
 import {useDispatch,useSelector} from 'react-redux';
-import { findOrderById } from "../../../../Api/src/controller/order.controller";
+// import { findOrderById } from "../../../../Api/src/controller/order.controller";
 import { findProductById } from "../../../state/product/customerproductSlice";
+import { addItemToCart } from "../../../state/Cart/cartSlice";
 
 
 const product = {
@@ -97,17 +98,26 @@ function classNames(...classes) {
 export default function ProductDetails() {
 
 
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+  // const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
-  const [ratingvalue, setratingValue] = useState(3);
+  // const [ratingvalue, setratingValue] = useState(3);
   const dispatch=useDispatch()
   const params=useParams();
+  const navigate=useNavigate();
   const productId=params.productid;
   useEffect(()=>{
 
     dispatch(findProductById({productId}))
 
   },[])
+
+  const goToCart=()=>{
+   dispatch(addItemToCart(filteredDetails));
+   navigate('/cart')
+
+
+    
+  }
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 10,
     borderRadius: 5,
@@ -121,18 +131,19 @@ export default function ProductDetails() {
     },
   }));
 
-  const filteredDetails=useSelector((state)=>state.product.product.data)
-  console.log(filteredDetails)
+  const filteredDetails=useSelector((state)=>state.product.product)
+ 
 
   return (
     <div className="bg-white lg:px-20">
+    {filteredDetails ? 
       <div className="pt-6">
         <nav aria-label="Breadcrumb">
           <ol
             role="list"
             className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
           >
-            {product.breadcrumbs.map((breadcrumb) => (
+            {product.breadcrumbs.map((breadcrumb) => (  
               <li key={breadcrumb.id}>
                 <div className="flex items-center">
                   <a
@@ -178,7 +189,7 @@ export default function ProductDetails() {
             <div className="flex flex-wrap space-x-5 justify-center">
               {product.images.map((image, index) => {
                 return (
-                  <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg max-w-[5rem] max-h-[5rem] mt-4">
+                  <div key={index} className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg max-w-[5rem] max-h-[5rem] mt-4">
                     <img
                       alt={image.alt}
                       src={image.src}
@@ -289,11 +300,11 @@ export default function ProductDetails() {
                     </RadioGroup>
                   </fieldset>
                 </div>
-                <Link to={"/cart"}>
-                  <Button className="mt-3 bg-indigo-500 px-7 py-4 rounded-lg text-white">
+               
+                  <Button className="mt-3 bg-indigo-500 px-7 py-4 rounded-lg text-white" onClick={goToCart}>
                     Add To Cart
                   </Button>
-                </Link>
+              
               </form>
             </div>
 
@@ -344,8 +355,8 @@ export default function ProductDetails() {
             <Grid container spacing={7}>
               <Grid item xs={7}>
                 <div className="space-y-5">
-                  {[1, 1, 1].map(() => {
-                    return <ProductReviewCard />;
+                  {[1, 1, 1].map((item,index) => {
+                    return <ProductReviewCard key={index}/>;
                   })}
                 </div>
               </Grid>
@@ -455,12 +466,13 @@ export default function ProductDetails() {
         <section className="pt-10">
           <h1 className="font-semibold mb-4 pl-4 text-lg">Similar Products</h1>
           <div className="grid xl:grid-cols-6 gap-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-4">
-            {mens_kurta.map((item) => {
-              return <HomeSectionCard {...item} />;
+            {mens_kurta.map((item,index) => {
+              return <HomeSectionCard {...item} key={index}/>;
             })}
           </div>
         </section>
       </div>
+      :<h1>Loading...</h1>}
       
     </div>
   );
