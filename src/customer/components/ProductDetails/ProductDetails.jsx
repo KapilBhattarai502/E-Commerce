@@ -99,7 +99,7 @@ export default function ProductDetails() {
 
 
   // const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
+  const [selectedSize, setSelectedSize] = useState('');
   // const [ratingvalue, setratingValue] = useState(3);
   const dispatch=useDispatch()
   const params=useParams();
@@ -112,7 +112,8 @@ export default function ProductDetails() {
   },[])
 
   const goToCart=()=>{
-   dispatch(addItemToCart(filteredDetails));
+    const data={productId:params.productid,size:selectedSize.name}
+   dispatch(addItemToCart(data));
    navigate('/cart')
 
 
@@ -131,7 +132,9 @@ export default function ProductDetails() {
     },
   }));
 
-  const filteredDetails=useSelector((state)=>state.product.product)
+  const filteredDetails=useSelector((state)=>state.product.product);
+
+
  
 
   return (
@@ -267,6 +270,7 @@ export default function ProductDetails() {
                               : "cursor-not-allowed bg-gray-50 text-gray-200",
                             "group relative flex items-center justify-center rounded-md border px-4 py-3 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none data-[focus]:ring-2 data-[focus]:ring-indigo-500 sm:flex-1 sm:py-6"
                           )}
+
                         >
                           <span>{size.name}</span>
                           {size.inStock ? (

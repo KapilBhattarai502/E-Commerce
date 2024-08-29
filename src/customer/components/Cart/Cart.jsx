@@ -1,25 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CartItem from "./CartItem";
 import {useNavigate} from "react-router-dom"
-import {useSelector} from "react-redux"
+import {useSelector,useDispatch} from "react-redux"
+import { getCart } from "../../../state/Cart/cartSlice";
+
 
 
 
 const Cart = () => {
-  const authData=useSelector((state)=>state);
-  console.log("authData",authData);
+
+  const dispatch=useDispatch();
+
   const navigate=useNavigate();
+  const {cart}=useSelector((state)=>state)
+  
+  console.log('cart item to display is',cart);
+
   const handleCheckOut=()=>{
    
     navigate(`/checkout/?step=2`)
 
 
+
   }
+useEffect(()=>{
+  dispatch(getCart())
+  
+},[cart.updateCartItem,cart.deleteCartItem])
+
   return (
     <div>
       <div className="lg:grid grid-cols-3 lg:px-16  relative mt-5 ">
         <div className="col-span-2">
-          <CartItem />
+        {cart &&  cart.cartItems ? cart.cartItems.map((item,index)=> <CartItem {...item} key={index}/>):<h1>No items selected.Please select some items </h1>}
+         
         
         </div>
 
@@ -29,7 +43,7 @@ const Cart = () => {
             <hr />
             <div className="flex flex-wrap justify-between mt-5">
               <p className="font-semibold opacity-60">Discount</p>
-              <p className="text-green-500 font-bold">Rs4687</p>
+              <p className="text-green-500 font-bold">Rs{cart.cart?.discounts}</p>
             </div>
             <div className="flex flex-wrap justify-between mt-5 mb-3">
               <p className="font-semibold opacity-60">Delivery Charges</p>
@@ -38,7 +52,7 @@ const Cart = () => {
             <hr />
             <div className="mt-2 flex flex-wrap justify-between ">
               <h1 className="font-bold text-lg  ">Total Amount</h1>
-              <p className="text-green-500 font-bold">Rs1278</p>
+              <p className="text-green-500 font-bold">Rs{cart.cart?.totalPrice}</p>
             </div>
             
             <button onClick={()=>handleCheckOut()} className=" text-center bg-purple-500 text-white pt-3 pb-3 w-full rounded-md  mt-4">Check Out</button>

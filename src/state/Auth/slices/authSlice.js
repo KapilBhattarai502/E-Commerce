@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {createAsyncThunk,createSlice} from '@reduxjs/toolkit';
+import { CleanHands } from '@mui/icons-material';
 export const registerUser=createAsyncThunk('register/users',async(userData)=>{
     
     const response=await axios.post('http://localhost:6464/auth/signup',userData);
@@ -18,12 +19,18 @@ export const loginUser=createAsyncThunk('login/users',async(userData)=>{
 
     try {
         const response=await axios.post(`http://localhost:6464/auth/login`,userData)
+
+       
        
         const user= response.data;
+
+
+
        
         if(user.jwt){
             localStorage.setItem("jwt",user.jwt)
         }
+        console.log(user)
        
        return user;
         

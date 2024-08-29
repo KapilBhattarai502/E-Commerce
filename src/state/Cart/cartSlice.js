@@ -2,37 +2,44 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { api } from "../../config/apiConfig";
 
 export const getCart = createAsyncThunk("get/Cart", async () => {
-  const { data } = await api.get("/api/cart/");
+  const  {data}  = await api.get("/api/cart/");
+  
   return data;
 });
 
 export const addItemToCart = createAsyncThunk("add/ItemToCart", async (reqData) => {
   console.log('reqData is',reqData)
-  const { data } = await api.put("/api/cart/add", reqData);
+  const  data  = await api.put("/api/cart/add", reqData);
   console.log('data are',data);
   // return data;
 });
 
-export const removeCartItem = createAsyncThunk("remove/Item", async (reqData) => {
-  const { data } = await api.delete(`/api/cart_items/${reqData.cartItemId}`);
+export const removeCartItem = createAsyncThunk("remove/Item", async (cartItemId) => {
+  const { data } = await api.delete(`/api/cart_items/${cartItemId}`);
   return data;
 });
 
 export const updateCartItem = createAsyncThunk("update/Item", async (reqData) => {
+  console.log('reqData is',reqData);
   const { data } = await api.put(
     `/api/cart_items/${reqData.cartItemId}`,
     reqData.data
   );
   return data;
 });
+export const clearCart = createAsyncThunk("clear/cart",async()=>{
+  return;
+})
 
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
     cart: null,
-    cartItems: [],
+    cartItems: null,
     status: null,
     error: null,
+    updateCartItem:null,
+    deleteCartItem:null,
   },
   reducers: {},
 
@@ -43,7 +50,7 @@ const cartSlice = createSlice({
       })
       .addCase(addItemToCart.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.cartItems.push(action.payload);
+        state.cartItems=action.payload;
       })
       .addCase(addItemToCart.rejected, (state, action) => {
         (state.status = "failed"), (state.error = action.error.message);
@@ -52,22 +59,21 @@ const cartSlice = createSlice({
         state.status = "pending";
       })
       .addCase(getCart.fulfilled, (state, action) => {
-        (state.status = "succeeded"),
-          (state.error = null),
-          (state.cart = action.payload),
-          (state.cartItems = action.payload.cartItems);
+          state.status = "succeeded",
+          state.error = null,
+          state.cart = action.payload,
+          state.cartItems = action.payload.cartItems;
       })
       .addCase(getCart.rejected, (state, action) => {
-        (state.status = "failed"), (state.error = action.error.message);
+        state.status = "failed",
+        state.error = action.error.message;
       })
       .addCase(removeCartItem.pending, (state, action) => {
         state.status = "pending";
       })
       .addCase(removeCartItem.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.cartItems = state.cartItems.filter((item) => {
-          item.id !== action.payload;
-        });
+        state.deleteCartItem=action.payload
       })
       .addCase(removeCartItem.rejected, (state, action) => {
         (state.status = "failed"), (state.error = action.error.message);
@@ -77,13 +83,24 @@ const cartSlice = createSlice({
       })
       .addCase(updateCartItem.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.cartItems = state.cartItems.map((item) => {
-          item.id === action.payload.id ? action.payload : item;
-        });
+        state.updateCartItem=action.payload
       })
       .addCase(updateCartItem.rejected, (state, action) => {
         state.status = "failed",
         state.error = action.error.message
+       
+      })
+      .addCase(clearCart.pending,(state)=>{
+        state.status='pending'
+      })
+      .addCase(clearCart.fulfilled,(state)=>{
+        state.status='fulfilled',
+        state.cart=null,
+        state.cartItems=null,
+        state.error=null
+      })
+      .addCase(clearCart.rejected,(state)=>{
+        state.status='rejected'
       })
   },
 });

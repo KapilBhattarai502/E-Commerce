@@ -3,10 +3,13 @@ import { findUserById } from "../services/user.service.js";
 
 
 export const authenticate=async(req,res,next)=>{
+
+    
    
 
     try {
-        const token=await req.headers.authoriztion?.split(" ")[1];
+        const token=await req.headers.authorization?.split(" ")[1];
+
    
         
         if(!token){
@@ -14,7 +17,7 @@ export const authenticate=async(req,res,next)=>{
 
         }
         const userId=await getUserIdFromToken(token);
-        const user=findUserById(userId);
+        const user=await findUserById(userId);
         req.user=user;
     } catch (error) {
        

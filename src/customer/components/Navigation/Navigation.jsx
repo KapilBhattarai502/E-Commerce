@@ -55,6 +55,7 @@ import { Link } from "react-router-dom";
 import AuthModal from "../Auth/AuthModal";
 import { getUser, logout } from "../../../state/Auth/slices/authSlice";
 import { CatchingPokemon } from "@mui/icons-material";
+import { clearCart } from "../../../state/Cart/cartSlice";
 
 const navigation = {
   categories: [
@@ -199,7 +200,9 @@ export default function Navigation() {
     setAnchorEl(event.currentTarget);
   };
   const handleLogout = () => {
+    dispatch(clearCart())
     dispatch(logout());
+
     handleCloseUserMenu();
   };
   const { auth } = useSelector((state) => state);
@@ -232,6 +235,10 @@ export default function Navigation() {
       handleClose();
     }
   }, [auth.user]);
+
+  const goToCart=()=>{
+    navigate('/cart')
+  }
  
 
   return (
@@ -657,10 +664,8 @@ export default function Navigation() {
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
-                  <Link
-                    className="group -m-2 flex items-center p-2"
-                    to={"cart"}
-                  >
+                <div className="flex justify-between items-center" onClick={goToCart}>
+                  
                     <ShoppingBagIcon
                       aria-hidden="true"
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
@@ -668,8 +673,9 @@ export default function Navigation() {
                     <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
                       0{/* {cartItemCount.Cart} */}
                     </span>
-                    <span className="sr-only">items in cart, view bag</span>
-                  </Link>
+                    </div>
+                    
+            
                 </div>
               </div>
             </div>

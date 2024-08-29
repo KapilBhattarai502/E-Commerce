@@ -48,8 +48,11 @@ export async function cartServicefindUserCart(userId){
 
 export const cartServiceaddCartItem=async(userId,req)=>{
     try {
+    
         const cart=await Cart.findOne({user:userId});
+        console.log('cart is',cart)
         const product=await Product.findById(req.body.productId);
+
 
         const isPresent =await CartItem.findOne({cart:cart._id,product:product._id,userId})
 
@@ -65,6 +68,8 @@ export const cartServiceaddCartItem=async(userId,req)=>{
 
 
             })
+
+             await cartItem.save()
 
 
 
