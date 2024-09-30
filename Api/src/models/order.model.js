@@ -66,6 +66,12 @@ const orderSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  totalDisountedPrice:{
+    type:Number
+  },
+  discounts:{
+    type:Number
+  }
 });
 
 export const Order = mongoose.model("orders", orderSchema);

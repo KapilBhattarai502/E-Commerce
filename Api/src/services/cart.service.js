@@ -24,18 +24,21 @@ export async function cartServicefindUserCart(userId){
        
 
         let totalPrice=0;
+        let totalDiscount=0;
         let totalDiscountedPrice=0;
         let totalItem=0;
         for(let cartItem of cart.cartItems){
-            totalPrice+=cartItem.price;
+            totalPrice+=cartItem.product.price*cartItem.quantity;
             totalDiscountedPrice+=cartItem.discountedPrice;
+            totalDiscount+=cartItem.discountedPrice
             totalItem+=cartItem.quantity;
 
 
         }
         cart.totalPrice=totalPrice;
         cart.totalItem=totalItem;
-        cart.discounts=totalPrice-totalDiscountedPrice;
+        cart.discounts=totalDiscount;
+        cart.totalDiscountedPrice=totalPrice-totalDiscount;
 
         return cart;
 

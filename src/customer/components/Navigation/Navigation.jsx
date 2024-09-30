@@ -196,6 +196,7 @@ export default function Navigation() {
   const open1 = Boolean(anchorEl);
   const navigate = useNavigate();
   const jwt = localStorage.getItem("jwt");
+  // console.log('jwt in navigation is',jwt)
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -206,6 +207,7 @@ export default function Navigation() {
     handleCloseUserMenu();
   };
   const { auth } = useSelector((state) => state);
+  // console.log('auth is ',auth);
 
   const handleOpen = () => {
     setOpenAuthModal(true);

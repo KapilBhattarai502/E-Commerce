@@ -1,28 +1,37 @@
-import { Address } from "../models/address.model.js";
+import {Address} from "../models/user.model.js"
 import { Order } from "../models/order.model.js";
 import { OrderItem } from "../models/orderItems.js";
 import { cartServicefindUserCart } from "./cart.service.js";
 
-export const orderServiceCreateOrder = async (user, shipAddress) => {
+export const orderServiceCreateOrder = async (user, newAddress) => {
+  // console.log('shipAddress is',shipAddress)
   let address;
 
-  if (shipAddress._id) {
-    let existAddress = await Address.findById(shipAddress._id);
-    address = existAddress;
-  } else {
+  const savedAddress=await Address.create(newAddress);
+
+
+  
+
+
+
+  // if (shipAddress._id) 
+  // {
+  //   let existAddress = await Address.findById(shipAddress._id).lean();
+  //   address = existAddress;
+  // } else {
     //If we want to do some twiks before saving to the database we can use this snippet
-    address = new Address(shipAddress);
-    address.user = user;
-    await address.save();
+    // address = new Address(shipAddress);
+    // address.user = user;
+    // await address.save();
 
     // I got little confused here  
-    console.log(user.address)
-    user.address.push(address);
-    console.log(user.address)
+ 
+  // }
+  user.address.push(savedAddress);
+  // console.log(user.address)
 
-    await user.save();
-  }
-
+  await user.save();
+  
   const cart = await cartServicefindUserCart(user._id);
   const orderItems = [];
 
@@ -46,15 +55,15 @@ export const orderServiceCreateOrder = async (user, shipAddress) => {
     discounts: cart.discounts,
     totalItem: cart.discounts,
     totalItem: cart.totalItem,
-    shipAddress: address,
+    shippingAddress: savedAddress,
   });
 
   const savedOrder = await createdOrder.save();
 
   return savedOrder;
 };
-export const orderServiceFindOrderById = (orderId) => {
-  const order = Order.findById(orderId)
+export const orderServiceFindOrderById = async(orderId) => {
+  const order =await Order.findById(orderId)
     .populate("user")
     .populate({ path: "orderItems", populate: { path: "product" } })
     .populate("shippingAddress");

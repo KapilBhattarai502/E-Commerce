@@ -14,10 +14,10 @@ export const createOrder=async(req,res)=>{
 }
 
 export const findOrderById = async(req,res)=>{
-    const user=req.user;
+    // const user=await req.user;
     try {
         let createdOrder=await orderServiceFindOrderById(req.params.id);
-        return res.status(201).send(createOrder);
+        return res.status(201).send(createdOrder);
     } catch (error) {
 
         return res.status(500).send({error:error.message})
@@ -29,7 +29,7 @@ export const orderHistory = async(req,res)=>{
     const user=req.user;
     try {
         let createdOrder=await orderServiceusersOrderHistory(user._id);
-        return res.status(201).send(createOrder);
+        return res.status(201).send(createdOrder);
     } catch (error) {
 
         return res.status(500).send({error:error.message})

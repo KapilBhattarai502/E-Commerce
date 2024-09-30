@@ -3,20 +3,24 @@ import IconButton from "@mui/material/IconButton";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Button from "@mui/material/Button";
-import { useSelector,useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { removeCartItem, updateCartItem } from "../../../state/Cart/cartSlice";
 
 const CartItem = (props) => {
-  console.log(props)
+  // console.log(props)
   const dispatch=useDispatch();
 
   const handleUpdateCartItem=(num)=>{
     const data={
       data:{
         quantity:props.quantity+num
+        
       },
       cartItemId:props?._id
+
     }
+   
+  //  console.log('quantity is',data.data.quantity)
     dispatch(updateCartItem(data))
 
    

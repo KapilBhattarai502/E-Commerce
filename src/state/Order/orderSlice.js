@@ -2,16 +2,17 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { api } from "../../config/apiConfig";
 
 export const createOrder=createAsyncThunk('create/order',async(reqData)=>{
-    const {data}= await api.post(`/api/orders`,reqData.address)
-    if(data.id){
-        reqData.navigate({search:`step=3&order_id=${data.id}`});
+    const {data}= await api.post(`/api/orders/`,reqData.address)
+
+    if(data._id){
+        reqData.navigate({search:`step=3&order_id=${data._id}`});
     }
     return data
 })
 
 export const getOrderById=createAsyncThunk('get/order/ById',async(orderId)=>{
 
-    const {data}=api.get(`/api/orders/${orderId}`);
+    const {data}=await api.get(`/api/orders/${orderId}`);
     return data;
 
 

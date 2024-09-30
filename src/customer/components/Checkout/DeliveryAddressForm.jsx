@@ -2,10 +2,19 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import AddressCard from "../Addresscard/AddressCard";
 import Button from "@mui/material/Button";
+
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import {useDispatch,useSelector} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
+import { createOrder } from "../../../state/Order/orderSlice";
 
 const DeliveryAddressForm = () => {
+  const dispatch=useDispatch()
+  const navigate=useNavigate()
+  const {user}=useSelector((state)=>state.auth)
+
+  
     const handleSubmit=(event)=>{
         event.preventDefault();
     
@@ -14,17 +23,22 @@ const DeliveryAddressForm = () => {
         const address={
             firstName:data.get("firstName"),
             lastName:data.get("lastName"),
-            Address:data.get("address"),
-            City:data.get("City"),
+            streetAddress:data.get("address"),
+            city:data.get("City"),
             state:data.get("State"),
-            postalCode:data.get("Zippostal"),
+            zipCode:data.get("Zippostal"),
             phoneNumber:data.get("PhoneNumber")
         }
-        console.log("address",address);
+        const orderData={address,navigate}
+        dispatch(createOrder(orderData))
+
+        
+  
      
 
 
     }
+    
   return (
     <div className="">
       <Grid container spacing={4}>
@@ -35,14 +49,16 @@ const DeliveryAddressForm = () => {
           className="border rounded-e-md shadow-md h-[30.5rem] overflow-y-scroll"
         >
           <div className="p-6 py-7  cursor-pointer">
-            <AddressCard />
-            <Button
-              sx={{ mt: 2, bgcolor: "RGB(145 85 253)" }}
-              size="large"
-              variant="contained"
-            >
-              Deliver Here
-            </Button>
+          { user?.address?.map((item)=>{
+            return(
+
+            <AddressCard {...item}/>
+            )
+            
+
+          })
+          }
+            
           </div>
         </Grid>
         <Grid item xs={12} lg={7}>

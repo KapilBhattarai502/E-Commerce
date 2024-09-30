@@ -14,7 +14,7 @@ const Cart = () => {
   const navigate=useNavigate();
   const {cart}=useSelector((state)=>state)
   
-  console.log('cart item to display is',cart);
+
 
   const handleCheckOut=()=>{
    
@@ -23,10 +23,20 @@ const Cart = () => {
 
 
   }
-useEffect(()=>{
-  dispatch(getCart())
+  const user = useSelector((state)=>state.auth)
+
   
-},[cart.updateCartItem,cart.deleteCartItem])
+  useEffect(()=>{
+    {
+      
+
+  dispatch(getCart())
+
+  }
+  
+},[cart.updateCartItem,cart.deleteCartItem,user.jwt])
+
+
 
   return (
     <div>
@@ -41,6 +51,11 @@ useEffect(()=>{
           <div className="price-details p-8 border-t-2 rounded-lg">
             <p className="uppercase font-bold opacity-60 pb-4">Price Details</p>
             <hr />
+            <div className="flex flex-wrap justify-between mt-5 mb-3">
+              <p className="font-semibold opacity-60">Price</p>
+              <p className="text-green-500 font-bold">Rs{cart.cart?.totalPrice}</p>
+            </div>
+            <hr/>
             <div className="flex flex-wrap justify-between mt-5">
               <p className="font-semibold opacity-60">Discount</p>
               <p className="text-green-500 font-bold">Rs{cart.cart?.discounts}</p>
@@ -52,7 +67,7 @@ useEffect(()=>{
             <hr />
             <div className="mt-2 flex flex-wrap justify-between ">
               <h1 className="font-bold text-lg  ">Total Amount</h1>
-              <p className="text-green-500 font-bold">Rs{cart.cart?.totalPrice}</p>
+              <p className="text-green-500 font-bold">Rs{cart.cart?.totalDiscountedPrice}</p>
             </div>
             
             <button onClick={()=>handleCheckOut()} className=" text-center bg-purple-500 text-white pt-3 pb-3 w-full rounded-md  mt-4">Check Out</button>

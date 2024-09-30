@@ -8,9 +8,9 @@ export const getCart = createAsyncThunk("get/Cart", async () => {
 });
 
 export const addItemToCart = createAsyncThunk("add/ItemToCart", async (reqData) => {
-  console.log('reqData is',reqData)
+
   const  data  = await api.put("/api/cart/add", reqData);
-  console.log('data are',data);
+
   // return data;
 });
 
@@ -20,7 +20,7 @@ export const removeCartItem = createAsyncThunk("remove/Item", async (cartItemId)
 });
 
 export const updateCartItem = createAsyncThunk("update/Item", async (reqData) => {
-  console.log('reqData is',reqData);
+ 
   const { data } = await api.put(
     `/api/cart_items/${reqData.cartItemId}`,
     reqData.data
@@ -28,7 +28,7 @@ export const updateCartItem = createAsyncThunk("update/Item", async (reqData) =>
   return data;
 });
 export const clearCart = createAsyncThunk("clear/cart",async()=>{
-  return;
+  return null;
 })
 
 const cartSlice = createSlice({
@@ -40,6 +40,8 @@ const cartSlice = createSlice({
     error: null,
     updateCartItem:null,
     deleteCartItem:null,
+    clearCartItem:null,
+    
   },
   reducers: {},
 
@@ -97,7 +99,8 @@ const cartSlice = createSlice({
         state.status='fulfilled',
         state.cart=null,
         state.cartItems=null,
-        state.error=null
+        state.error=null,
+        state.clearCartItem=action.payload;
       })
       .addCase(clearCart.rejected,(state)=>{
         state.status='rejected'

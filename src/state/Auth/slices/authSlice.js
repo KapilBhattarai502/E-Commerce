@@ -24,15 +24,17 @@ export const loginUser=createAsyncThunk('login/users',async(userData)=>{
        
         const user= response.data;
 
+        console.log(user.jwt)
+
 
 
        
         if(user.jwt){
             localStorage.setItem("jwt",user.jwt)
         }
-        console.log(user)
+      console.log('login user jwt is',user.jwt)
        
-       return user;
+       return user.jwt;
         
     } catch (error) {
 
@@ -59,6 +61,7 @@ export const getUser=createAsyncThunk('get/Users',async(jwt)=>{
 })
 export const logout=createAsyncThunk('logout',()=>{
     localStorage.removeItem('jwt');
+    return;
 
 })
    
@@ -72,11 +75,9 @@ const authSlice =createSlice({
           user: null,
           status: null,
           error: null,
-          jwt: null,
+          jwt: localStorage.getItem('jwt')|| null,
     },
-    reducers:{
-       
-    },
+   
 
     extraReducers:builder=>{
         builder
@@ -97,7 +98,8 @@ const authSlice =createSlice({
         })
         .addCase(loginUser.fulfilled,(state,action)=>{
             state.status="succeeded"
-            state.jwt=action.payload.jwt
+            state.jwt=action.payload
+           
         })
         .addCase(loginUser.rejected,(state,action)=>{
             state.status='failed',
@@ -114,11 +116,17 @@ const authSlice =createSlice({
             state.status='failed',
             state.error=action.error.message 
         })
+        .addCase(logout.pending,(state,action)=>{
+            state.status='pending'
+        })
         .addCase(logout.fulfilled,(state)=>{
             state.status="succeeded"
             state.jwt=null
             state.user=null
             state.error=null
+        })
+        .addCase(logout.rejected,(state,action)=>{
+            state.status='rejected'
         })
        
 

@@ -11,7 +11,7 @@ const RegisterForm = () => {
   const navigate=useNavigate();
   const jwt=localStorage.getItem("jwt")
   const {auth}=useSelector((state)=>state)
-  console.log("Auth is ",auth);
+
  
    
   useEffect(()=>{
