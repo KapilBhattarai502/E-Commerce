@@ -7,6 +7,6 @@ const router=express.Router();
 
 router.get("/",getAllProducts);
 
-router.get("/id/:id",authenticate,findProductById);
+router.get("/id/:id",findProductById);
 
 export default router;

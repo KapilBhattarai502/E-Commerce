@@ -63,8 +63,6 @@ app.post('/generate-signature', (req, res) => {
   return res.json(signature);
 });
 
-app.get("/", (req, res) => {
-  return res.status(200).send({ message: "Hello from the backend" });
-});
+
 
 export default app;

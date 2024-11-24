@@ -2,42 +2,42 @@ import { Category } from "../models/category.model.js";
 import { Product } from "../models/product.model.js";
 
 export const productServiceCreateProduct = async (reqData) => {
-  let topLevel = await Category.findOne({ name: reqData.topLevelCategory });
+  // let topLevel = await Category.findOne({ name: reqData.topLevelCategory });
 
-  if (!topLevel) {
-    topLevel = new Category({
-      name: reqData.topLevelCategory,
-      level: 1,
-    });
-    await topLevel.save();
-  }
+  // if (!topLevel) {
+  //   topLevel = new Category({
+  //     name: reqData.topLevelCategory,
+  //     level: 1,
+  //   });
+  //   await topLevel.save();
+  // }
 
-  let secondLevel = await Category.findOne({
-    name: reqData.secondLevelCategory,
-    parentCategory: topLevel._id,
-  });
+  // let secondLevel = await Category.findOne({
+  //   name: reqData.secondLevelCategory,
+  //   parentCategory: topLevel._id,
+  // });
 
-  if (!secondLevel) {
-    secondLevel = new Category({
-      name: reqData.secondLevelCategory,
-      parentCategory: topLevel._id,
-      level: 2,
-    });
-    await secondLevel.save();
-  }
+  // if (!secondLevel) {
+  //   secondLevel = new Category({
+  //     name: reqData.secondLevelCategory,
+  //     parentCategory: topLevel._id,
+  //     level: 2,
+  //   });
+  //   await secondLevel.save();
+  // }
 
-  let thirdLevel = await Category.findOne({
-    name: reqData.thirdLevelCategory,
-    parentCategory: secondLevel._id,
-  });
-  if (!thirdLevel) {
-    thirdLevel = new Category({
-      name: reqData.thirdLevelCategory,
-      parentCategory: secondLevel._id,
-      level: 3,
-    });
-    await thirdLevel.save();
-  }
+  // let thirdLevel = await Category.findOne({
+  //   name: reqData.thirdLevelCategory,
+  //   parentCategory: secondLevel._id,
+  // });
+  // if (!thirdLevel) {
+  //   thirdLevel = new Category({
+  //     name: reqData.thirdLevelCategory,
+  //     parentCategory: secondLevel._id,
+  //     level: 3,
+  //   });
+  //   await thirdLevel.save();
+  // }
 
   const product = new Product({
     title: reqData.title,
@@ -50,7 +50,7 @@ export const productServiceCreateProduct = async (reqData) => {
     price: reqData.price,
     sizes: reqData.sizes,
     quantity: reqData.quantity,
-    category: thirdLevel._id,
+    // category: thirdLevel._id,
   });
 
   return await product.save();
@@ -94,7 +94,7 @@ export const productServicegetAllProducts = async (reqQuery) => {
 
   
 
-  pageSize = pageSize > 0 ? pageSize : 10;
+  pageSize = pageSize > 0 ? pageSize : 9;
   pageNumber = pageNumber > 0 ? pageNumber : 1;
 
   let query = Product.find().populate("category");
@@ -109,7 +109,7 @@ export const productServicegetAllProducts = async (reqQuery) => {
       return { content: [], currentPage: 1, totalPages: 0 };
     }
   }
-  //"white","balck","orange"
+  //"white","balck","orange" 
   if (colors) {
     const colorSet = new Set(
       colors.split(",").map((color) => color.trim().toLowerCase())

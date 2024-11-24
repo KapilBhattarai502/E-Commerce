@@ -14,7 +14,7 @@ const Homepage = () => {
           <HomeSectionCarousel sectionName={"Men's Kurta"} data={mens_kurta}/>
           <HomeSectionCarousel sectionName={"Men's Shoes"} data={mens_kurta}/>
           <HomeSectionCarousel sectionName={"Mens's Shirt"} data={mens_shirt}/>
-          <HomeSectionCarousel sectionName={"Women's Saree"}data={mens_kurta}/>
+          <HomeSectionCarousel sectionName={"Women's Saree"} data={mens_kurta}/>
           <HomeSectionCarousel data={mens_kurta} sectionName={"Women's Dress"}/>
           
         </div>

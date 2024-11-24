@@ -6,13 +6,13 @@ import { getUserIdFromToken } from "../Config/Jwtprovider.js";
 
 export const createUser = async (userData) => {
   try {
-    let { firstName, lastName, email, password } = userData;
+    let { firstName, lastName, email, password,role } = userData;
     const isUserExist = await User.findOne({ email });
     if (isUserExist) {
       throw new Error("user already exists :", email);
     }
     password = await bcrypt.hash(password, 8);
-    const user = await User.create({ firstName, lastName, email, password });
+    const user = await User.create({ firstName, lastName, email, password,role });
     return user;
   } catch (error) {
     throw new Error(error.message);

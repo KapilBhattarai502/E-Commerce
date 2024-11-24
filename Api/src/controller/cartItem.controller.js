@@ -5,9 +5,9 @@ export const updateCartItem=async(req,res)=>{
     const user=await req.user;
 
     try {
-        const updatedCartItem=await cartItemServiceupdateCartItem(user._id,req.params.id,req.body);
-        console.log(updatedCartItem)
-        return res.status(200).send(updatedCartItem);
+        const updatedCartItem=await cartItemServiceupdateCartItem(user._id,req.params.id,req.body);//req.body=data
+        console.log('updatedCartItemis',updatedCartItem)
+        return res.status(200).json(updatedCartItem);
     } catch (error) {
 
         return res.status(500).send({error:error.message})

@@ -18,31 +18,38 @@ const productSchema =new mongoose.Schema({
     },
     discountedPrice:{
         type:Number,
+        required:true,
        
     },
     discountedPercent:{
         type:Number,
+        required:true,
 
     },
     quantity:{
         type:Number,
+        required:true,
 
     },
     brand:{
         type:String,
+        required:true,
 
     },
     color:{
         type:String,
+        required:true,
 
 
     },
     sizes:[{
         name:{type:String},
         quantity:{type:Number}
+        
     }],
     imageUrl:{
         type:String,
+        required:true,
     },
     ratings:[{
         type:mongoose.Schema.Types.ObjectId,

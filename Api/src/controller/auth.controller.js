@@ -6,6 +6,7 @@ import {cartServicecreateCart} from '../services/cart.service.js';
 
 export const register =async(req,res)=>{
     try {
+        console.log("req.body is",req.body);
         const user= await createUser(req.body);
         console.log(user._id);
         const jwt=await generateToken(user._id);
@@ -43,7 +44,7 @@ export const login =async(req,res)=>{
 
        const jwt =await generateToken(user._id);
 
-       return res.status(200).send({jwt,message:"Login Successfull"})
+       return res.status(200).send({token:jwt,user:{name:user.firstName+user.lastName,role:user.role}})
 
 
 

@@ -20,6 +20,7 @@ export const removeCartItem = createAsyncThunk("remove/Item", async (cartItemId)
 });
 
 export const updateCartItem = createAsyncThunk("update/Item", async (reqData) => {
+  console.log('reqData is',reqData)
  
   const { data } = await api.put(
     `/api/cart_items/${reqData.cartItemId}`,
